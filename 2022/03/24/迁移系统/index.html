@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="机器描述笔记本型号为惠普光影精灵3。 硬盘插口情况为：一个m.2插口，一个sata3.0插口。 原m.2插口使用的是128G的sata通道的固态硬盘  关于 m.2、sata、nvme 等的区别，可以参考以下两个网站： SSD中，SATA、m2、PCIE和NVME各有什么意义 sata3.0和m.2的区别  主板为HP Pavilion Power Laptop 15-cb0xx。  查看主板型号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="m.2硬盘win10不重装迁移到新m.2（nvme协议）硬盘的方法">
+<meta property="og:url" content="https://example.com/2022/03/24/%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Karry blog">
+<meta property="og:description" content="机器描述笔记本型号为惠普光影精灵3。 硬盘插口情况为：一个m.2插口，一个sata3.0插口。 原m.2插口使用的是128G的sata通道的固态硬盘  关于 m.2、sata、nvme 等的区别，可以参考以下两个网站： SSD中，SATA、m2、PCIE和NVME各有什么意义 sata3.0和m.2的区别  主板为HP Pavilion Power Laptop 15-cb0xx。  查看主板型号">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.beihaiting.com/uploads/allimg/140730/10723-140I0213126229.jpg">
+<meta property="og:image" content="https://www.jarvisw.com/wp-content/uploads/2019/06/IMG_1917-1024x768.jpg">
+<meta property="og:image" content="https://www.jarvisw.com/wp-content/uploads/2019/06/IMG_1916-1024x768.jpg">
+<meta property="article:published_time" content="2022-03-23T16:34:23.000Z">
+<meta property="article:modified_time" content="2022-03-24T06:31:21.252Z">
+<meta property="article:author" content="Karry-Almond">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.beihaiting.com/uploads/allimg/140730/10723-140I0213126229.jpg">
+
+<link rel="canonical" href="https://example.com/2022/03/24/%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>m.2硬盘win10不重装迁移到新m.2（nvme协议）硬盘的方法 | Karry blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Karry blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-简历">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Karry-Almond" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/03/24/%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/website/avatar.jpg">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          m.2硬盘win10不重装迁移到新m.2（nvme协议）硬盘的方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-24 00:34:23 / 修改时间：14:31:21" itemprop="dateCreated datePublished" datetime="2022-03-24T00:34:23+08:00">2022-03-24</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="机器描述"><a href="#机器描述" class="headerlink" title="机器描述"></a>机器描述</h1><p>笔记本型号为惠普光影精灵3。</p>
+<p>硬盘插口情况为：一个m.2插口，一个sata3.0插口。</p>
+<p>原m.2插口使用的是128G的sata通道的固态硬盘</p>
+<blockquote>
+<p>关于 m.2、sata、nvme 等的区别，可以参考以下两个网站：</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/48972075">SSD中，SATA、m2、PCIE和NVME各有什么意义</a></p>
+<p><a target="_blank" rel="noopener" href="https://m.php.cn/faq/442254.html">sata3.0和m.2的区别</a></p>
+</blockquote>
+<p>主板为HP Pavilion Power Laptop 15-cb0xx。</p>
+<blockquote>
+<p>查看主板型号：</p>
+<p>以管理员身份运行cmd，输入systeminfo。其中的“系统型号”就是主板型号</p>
+</blockquote>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>原本m.2插口的硬盘作为系统盘，仅有128G，已经不够用了。</p>
+<p>希望使用<code>1TB、m.2插口、NAMV协议</code>的硬盘，替换原来<code>128G、m.2插口、sata协议</code>的硬盘，并<strong>把原系统无损迁移到新硬盘中</strong>。</p>
+<p>并且新硬盘需要分区，分300G做系统盘（即原系统在这里面）、分700G做存储盘。</p>
+<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><h2 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h2><h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><ol>
+<li>傲梅分区助手（下载到原存储盘中）</li>
+<li><a target="_blank" rel="noopener" href="https://www.wepe.com.cn/download.html">微PE 安装包</a>（下载到原存储盘中）(注意我第一次下载的是v2.2，使用时有问题。使用v2.1没有问题。可以都试试，依个人情况而定。)</li>
+</ol>
+<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><ol>
+<li>U盘（大小16G即可）</li>
+<li>m.2读盘器</li>
+</ol>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><ol>
+<li><p>将新硬盘插入m.2读盘器，将读盘器连接到电脑。打开傲梅分区助手，迁移系统到新硬盘。这个时候可以选择新系统盘占用的空间大小，我选择了300G</p>
+</li>
+<li><p>将微PE安装到U盘中。双击微PE安装包，选择右下角的“安装到U盘”，后面的提示直接确定即可。</p>
+</li>
+<li><p>关闭计算机。将原m.2硬盘拆下，换上新的硬盘。此时再打开电脑，发现进不去，提示</p>
+<p><code>windows failed to start. a recent hardware or software change might be the cause. to fix the problem ......</code></p>
+<p>如下：</p>
+<p><img src="https://www.beihaiting.com/uploads/allimg/140730/10723-140I0213126229.jpg"></p>
+</li>
+<li><p>插上安装好微PE的U盘。进入bios，进入<code>开机选项</code>，把<code>传统模式</code>打开，并把usb的开机优先级调到最高。（这里的bios选项和操作因不同型号的电脑而不同，总的意思就是让电脑以usb开机）</p>
+</li>
+<li><p>在完成第4步后，电脑可以进入到微PE的系统。</p>
+<p>搬运<a target="_blank" rel="noopener" href="https://www.jarvisw.com/?p=1078%E4%B8%AD%E7%9A%84**SATA">https://www.jarvisw.com/?p=1078中的**SATA</a> AHCI模式硬盘下的win10迁移到nvme ssd步骤**</p>
+<ol>
+<li><p>打开diskGenius，右键屏幕左边的的<strong>ESP</strong>分区，选择<code>指派新的驱动器号（盘符）</code>，随便指派一个盘符即可，我这里假设选择的是H盘符</p>
+</li>
+<li><p>打开BOOTICE软件，选择<code>BCD编辑</code>&#x3D;&gt;<code>其他BCD文件</code>&#x3D;&gt;”H:\EFI\Microsoft\Boot\BCD”&#x3D;&gt;确定。</p>
+<p><img src="https://www.jarvisw.com/wp-content/uploads/2019/06/IMG_1917-1024x768.jpg"></p>
+<p>再继续选择<code>智能编辑模式</code>，把启动磁盘和启动分区设置对即可</p>
+<p><img src="https://www.jarvisw.com/wp-content/uploads/2019/06/IMG_1916-1024x768.jpg"></p>
+</li>
+<li><p>修改注册表，删除stornvme键下面的 StartOverride目录。</p>
+<p>首先在PE里面打开运行，输入regedit，这一步会打开PE里系统的注册表编辑器，当然我们这里并不是要改PE里的注册表，而是我们只是使用regedit的编辑功能，我们想要编辑的是nvme硬盘上系统盘的注册表。首先，注册表的位置一般是在X:\windows\system32\config目录下(X是你nvme里刚迁移过来的系统盘在PE里挂载的盘符)，我们单击一下HKEY_LOCAL_MACHINE分支将其选中，然后点【文件】-&gt;【加载配置单元】，然后找到 windows\system32\config\SYSTEM文件，加载后会让你输入一个加载项的名称，这里随便写就行，比如TEST，然后注册表编辑器就会把SYSTEM这个分支加载到HKEY_LOCAL_MACHINE\TEST下面，这时候我们展开这个目录，能看到这个分支和PE里的 HKEY_LOCAL_MACHINE\SYSTEM的结构类似，这个就是nvme硬盘上的注册表内容了。当然，这里有一点区别，那就是由于我们并没有启动nvme硬盘上的系统，所以CurrentControlSet这个目录是没有的，其实这个目录原本只是一个链接而已，指向的是当前加载的配置ControlSetxxx目录，由于这里只有一个ControlSet001，所以我们直接展开ControlSet001\Services\stornvme即可，然后删除 StartOverride目录，最后选中TEST分支，再使用【文件】-&gt;【卸载配置单元】，卸载分支即可。</p>
+</li>
+</ol>
+</li>
+<li><p>重启。进入bios，将第4步中更改的bios选项还原。即可发现系统成功运行。</p>
+</li>
+</ol>
+<h1 id="后续善后"><a href="#后续善后" class="headerlink" title="后续善后"></a>后续善后</h1><h2 id="U盘还原"><a href="#U盘还原" class="headerlink" title="U盘还原"></a>U盘还原</h2><p>在完成上述操作后，系统已经装好。不需要U盘继续装微PE系统了。如何还原U盘呢。</p>
+<p>系统搜索<code>计算机管理</code>，在左列选择<code>磁盘管理</code>，找到U盘和它的分区，删除分区后，将U盘格式化，即可恢复正常使用</p>
+<h2 id="剩下空间的分区"><a href="#剩下空间的分区" class="headerlink" title="剩下空间的分区"></a>剩下空间的分区</h2><p>打开傲梅分区助手，分区剩下的空间即可。</p>
+<h1 id="原始资料："><a href="#原始资料：" class="headerlink" title="原始资料："></a>原始资料：</h1><ol>
+<li><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dT4y1S7aY?spm_id_from=333.1007.top_right_bar_window_history.content.click%E3%80%82">https://www.bilibili.com/video/BV1dT4y1S7aY?spm_id_from=333.1007.top_right_bar_window_history.content.click。</a></p>
+<p>及其置顶评论</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、视频里漏了一点，硬盘第一次接入电脑最好初始化一下，具体操作是右键“此电脑”—管理—磁盘管理，进入之后就能看到新的硬盘，会提示你进行初始化，不用改任何设置直接初始化就可以了。另外，如果是新盘，显示有通电次数属于正常现象，这是由于硬盘盒导致的，通电时间为0就没问题。</span><br><span class="line"></span><br><span class="line">2、进入WinPE后，在修改BCD引导前，首先要用WinPE自带的DiskGenius软件挂载新装硬盘的ESP分区盘符：打开软件找到新盘的ESP分区，如果默认没有分配盘符号，可右键-指派新的驱动器号(盘符)，即可为新硬盘的ESP分区挂载一个盘符，具体操作可以参考这个视频里03:40到04:20的这段：教你升级系统盘不重装系统，看似简单其实很多坑</span><br><span class="line">之后，参考这篇文章的后半部分操作修改BCD引导：https://www.jarvisw.com/?p=1078</span><br><span class="line">【注意】：选择BCD文件时，一定是从你刚刚挂载的新硬盘ESP分区里EFI文件夹下的盘符里选择，不要选择你制作WinPE用的U盘里的ESP分区盘符，选错的话操作界面也会不一样。</span><br><span class="line"></span><br><span class="line">另外，要注意你的电脑是支持什么协议的SSD固态硬盘、以及你的硬盘盒是否也支持这种协议的硬盘；此外，硬盘选购时要注意功耗，因为这是给笔记本用，没有散热片的建议选择SN550这种低功耗盘。</span><br><span class="line"></span><br><span class="line">【其他问题及解答】：</span><br><span class="line">对于m.2物理接口，NGFF盘的金手指一般有2个缺口，NVME盘只有1个缺口；主板上的m.2插槽一般是1个缺口，但基本都向下兼容2个缺口的NGFF盘，所以如果你是NGFF换NVME盘，那一般无需担心缺口数的问题，两者都能插上，你只需要查询你的主板和cpu是否支持NVME协议即可</span><br><span class="line"></span><br><span class="line">关于4K对齐问题，经过测试，这样操作换上的新系统盘是已经4K对齐了的。</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J34y1D7wf">https://www.bilibili.com/video/BV1J34y1D7wf</a></p>
+</li>
+<li><p>网站资源：<a target="_blank" rel="noopener" href="https://www.jarvisw.com/?p=1078">https://www.jarvisw.com/?p=1078</a></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/22/github+hexo+next%E5%BB%BA%E7%AB%99/" rel="prev" title="github+hexo+next建站">
+      <i class="fa fa-chevron-left"></i> github+hexo+next建站
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">机器描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="nav-number">3.1.</span> <span class="nav-text">工具准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">3.1.1.</span> <span class="nav-text">软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6"><span class="nav-number">3.1.2.</span> <span class="nav-text">硬件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.2.</span> <span class="nav-text">具体步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E5%96%84%E5%90%8E"><span class="nav-number">4.</span> <span class="nav-text">后续善后</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#U%E7%9B%98%E8%BF%98%E5%8E%9F"><span class="nav-number">4.1.</span> <span class="nav-text">U盘还原</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%A9%E4%B8%8B%E7%A9%BA%E9%97%B4%E7%9A%84%E5%88%86%E5%8C%BA"><span class="nav-number">4.2.</span> <span class="nav-text">剩下空间的分区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E8%B5%84%E6%96%99%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">原始资料：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Karry-Almond"
+      src="/website/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Karry-Almond</p>
+  <div class="site-description" itemprop="description">Karry的成长历程</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/karry-almond" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;karry-almond" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Karry-Almond</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
