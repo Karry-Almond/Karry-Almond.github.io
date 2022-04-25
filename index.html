@@ -190,7 +190,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-25 11:02:57" itemprop="dateModified" datetime="2022-04-25T11:02:57+08:00">2022-04-25</time>
+                <time title="修改时间：2022-04-25 11:29:54" itemprop="dateModified" datetime="2022-04-25T11:29:54+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,79 +215,21 @@
       
           <h1 id="背景描述："><a href="#背景描述：" class="headerlink" title="背景描述："></a>背景描述：</h1><p>最近实验室里需要跑大数据，向老师要了一个8TB的SSD插在服务器上。服务器用的vmware的exsi来管理。</p>
 <p>服务器上原本有个虚拟机A，实验环境啥的都有，但是需要跑别的任务。不想重新配环境，于是想要把原来的虚拟机A克隆一份到新硬盘上，成为虚拟机B。</p>
-<p>并且原虚拟机A只分配了900GB的容量，并且这900GB只作为一个分区挂载在根目录&#x2F;上。现在需要给虚拟机B分配5TB的容量，并且保持原有配置不变，这5TB都挂载在根目录&#x2F;上。由于MBR分区容量最大只支持2TB，遂需要将原BIOS+MBR的格式转变为UEFI+GPT格式。</p>
+<p>原虚拟机A只分配了900GB的容量，并且这900GB只作为一个分区挂载在根目录&#x2F;上。现在需要给虚拟机B分配5TB的容量，并且保持原有配置不变，这5TB都挂载在根目录&#x2F;上。由于MBR分区容量最大只支持2TB，遂需要将原BIOS+MBR的格式转变为UEFI+GPT格式。</p>
 <p>于是，问题分解如下：</p>
 <ol>
 <li>8TB磁盘怎么插在服务器上，并且exsi怎么识别到该磁盘？</li>
 <li>如何在exsi上克隆一份虚拟机到指定硬盘上，并可以使用？</li>
 <li>如何将Liunx系统下的BIOS+MBR的格式转变为UEFI+GPT格式，并且扩展分区？</li>
 </ol>
-<h1 id="8TB磁盘怎么插在服务器上，并且exsi怎么识别到该磁盘"><a href="#8TB磁盘怎么插在服务器上，并且exsi怎么识别到该磁盘" class="headerlink" title="8TB磁盘怎么插在服务器上，并且exsi怎么识别到该磁盘"></a>8TB磁盘怎么插在服务器上，并且exsi怎么识别到该磁盘</h1><p>服务器的型号是戴尔的R740，当时是买了一个三星的evo870的8TB固态。</p>
-<p>但是并不是直接买了固态就可以插着用的。。。。。。</p>
-<p>加装固态到服务器上还要装 <strong>转换架</strong>和<strong>托架</strong>。</p>
-<p>这里就去京东上面搜<code>服务器硬盘托架</code>，找到自己服务器对应的型号就好。注意3.5英寸的托架和2.5英寸的托架，这里英寸<strong>并不是根据硬盘的尺寸来的，而是和服务器型号有关系</strong>。转换架都是一个型号的。</p>
-<p>插上去之后，exsi并不能马上识别到这个硬盘。点击exsi界面左侧的<code>storage</code>，在右边选择<code>New datastore</code>，选新增的这块硬盘，跟着提示一路确认就好。然后exsi就识别到这块硬盘了。</p>
-<h1 id="如何在exsi上克隆一份虚拟机到指定硬盘上，并可以使用"><a href="#如何在exsi上克隆一份虚拟机到指定硬盘上，并可以使用" class="headerlink" title="如何在exsi上克隆一份虚拟机到指定硬盘上，并可以使用"></a>如何在exsi上克隆一份虚拟机到指定硬盘上，并可以使用</h1><p>克隆一个虚拟机，<strong>只需要复制原虚拟机文件夹下的.vmx文件和.vmdk文件，并对复制后的.vmx文件稍做修改即可</strong>。</p>
-<p>两种方法：</p>
-<p>第一种手动克隆，指使用ssh连上装exsi的服务器，使用linux指令进行克隆</p>
-<p>第二种GUI克隆，指在exsi界面，按顺序点几个按钮即可。最后还是用ssh连上装exsi的服务器，但只是使用vi修改一下vmx文件。</p>
-<h2 id="手动克隆"><a href="#手动克隆" class="headerlink" title="手动克隆"></a>手动克隆</h2><p>以下内容摘自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a0b2c52a87e2">https://www.jianshu.com/p/a0b2c52a87e2</a></p>
-<p>1、启用esxi的ssh</p>
-<p>登录esxi web界面，在左侧导航器右击主机-&gt;服务-&gt;启用安全Shell（ssh）</p>
-<p><img src="E:\GitHub\github.io\source_posts\服务器装硬盘-exsi克隆虚拟机-Linux下BIOS与MBR转换为UEFI与GPT并扩展分区\1.png"></p>
-<p>2、ssh登录esxi</p>
-<p>3、找到虚拟机所在目录</p>
-<p>如果已经存在虚拟机名为hadoop-1, 那么在终端输入命令：<code>find / -name hadoop-1</code>, 结果如下：</p>
-<p><img src="E:\GitHub\github.io\source_posts\服务器装硬盘-exsi克隆虚拟机-Linux下BIOS与MBR转换为UEFI与GPT并扩展分区\2.png"></p>
-<p>可以看到虚拟机所在目录为:&#x2F;vmfs&#x2F;volumes&#x2F;5dee862f-6c107bc2-9290-0c9d9239daa7,</p>
-<blockquote>
-<p>这一步周，我的虚拟机所在位置是&#x2F;vmfs&#x2F;volumes&#x2F;硬盘名&#x2F;虚拟机文件夹名</p>
-<p>形如<code>/vmfs/volumes/5ff775a3-4028c334-2c9c-2cea7fe7e9f2/defi-1</code></p>
-</blockquote>
-<p>4、建立新虚拟机目录</p>
-<p>切换目录并新建hadoop-2目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /vmfs/volumes/5dee862f-6c107bc2-9290-0c9d9239daa7</span><br><span class="line">mkdir hadoop-2</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这一步中，由于我的需求是克隆到制定硬盘，那么要先找到目标硬盘文件夹。并在目标硬盘文件夹下创建新目录。</p>
-</blockquote>
-<p>5、拷贝vmx文件</p>
-<p>切换到hadoop-2目录：<code>cd hadoop-2</code>, 在hadoop-2目录下执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ../hadoop-1/hadoop-1.vmx ./hadoop-2.vmx             </span><br></pre></td></tr></table></figure>
-
-<p>6、克隆vmdk</p>
-<p>注意！！！这里克隆vmdk必须要用vmkfstools命令，不能直接用cp拷贝！！！</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vmkfstools  -i ./hadoop-1/hadoop-1.vmdk ./hadoop-2.vmdk </span><br></pre></td></tr></table></figure>
-
-<p>7、修改vmx文件</p>
-<p>执行<code>vim hadoop-2.vmx</code>, 只需要修改文件中的两个字段</p>
-<blockquote>
-<p>……</p>
-<p>scsi0:0.fileName &#x3D; “hadoop-2.vmdk”</p>
-<p>……</p>
-<p>displayName &#x3D; “你虚拟机想被设置的名字”</p>
-<p>……</p>
-</blockquote>
-<p>克隆完成</p>
-<p><strong>这一步骤，我与原作者的做法不一致，如果按照他的做法把所有的名字都改了，我无法开机。猜测是因为原作者的.vmx文件中没有使用绝对路径</strong></p>
-<p>8、esxi导入克隆完成的虚拟机</p>
-<p><img src="E:\GitHub\github.io\source_posts\服务器装硬盘-exsi克隆虚拟机-Linux下BIOS与MBR转换为UEFI与GPT并扩展分区\3.png"></p>
-<p><img src="E:\GitHub\github.io\source_posts\服务器装硬盘-exsi克隆虚拟机-Linux下BIOS与MBR转换为UEFI与GPT并扩展分区\4.png"></p>
-<p><img src="E:\GitHub\github.io\source_posts\服务器装硬盘-exsi克隆虚拟机-Linux下BIOS与MBR转换为UEFI与GPT并扩展分区\5.png"></p>
-<h2 id="GUI克隆"><a href="#GUI克隆" class="headerlink" title="GUI克隆"></a>GUI克隆</h2><p>1、登录exsi的web界面，在左侧导航栏中左键选择 Storage-&gt;原虚拟机所在硬盘-&gt;Datastore brower-&gt;找到原虚拟机所在文件夹。将.vmx文件和.vmdk 文件 copy 到目标硬盘的目标文件夹下。</p>
-<p>2、 依次执行 手动克隆 中步骤1,2,7，修改.vmx文件。</p>
-<p>3、执行手动克隆 中步骤8，完成注册。</p>
-<h1 id="如何将Liunx系统下的BIOS-MBR的格式转变为UEFI-GPT格式，并且扩展分区"><a href="#如何将Liunx系统下的BIOS-MBR的格式转变为UEFI-GPT格式，并且扩展分区" class="headerlink" title="如何将Liunx系统下的BIOS+MBR的格式转变为UEFI+GPT格式，并且扩展分区"></a>如何将Liunx系统下的BIOS+MBR的格式转变为UEFI+GPT格式，并且扩展分区</h1><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><ol>
-<li>改变分区格式，使用<code>sudo gdisk 磁盘文件</code>命令，</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">xxxx@xxxx-virtual-machine:~$ sudo gdisk /dev/sda</span><br><span class="line">GPT fdisk (gdisk) version 1.0.3</span><br><span class="line"></span><br><span class="line">Partition table scan:</span><br><span class="line">  MBR: MBR only</span><br><span class="line">  BSD: not present</span><br><span class="line">  APM: not present</span><br><span class="line">  GPT: not present</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">***************************************************************</span><br><span class="line">Found invalid GPT and valid MBR; converting MBR to GPT format</span><br><span class="line">in memory. THIS OPERATION IS POTENTIALLY DESTRUCTIVE! Exit by</span><br><span class="line">typing &#x27;q&#x27; if you don&#x27;t want to convert your MBR partitions</span><br><span class="line">to GPT format!</span><br><span class="line">***************************************************************</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (? for help): p</span><br><span class="line">Disk /dev/sda: 2147483648 sectors, 1024.0 GiB</span><br><span class="line">Model: Virtual disk    </span><br><span class="line">Sector size (logical/physical): 512/512 bytes</span><br><span class="line">Disk identifier (GUID): DAD4917E-FB9E-4DDE-AC85-AF59499897DF</span><br><span class="line">Partition table holds up to 128 entries</span><br><span class="line">Main partition table begins at sector 2 and ends at sector 33</span><br><span class="line">First usable sector is 34, last usable sector is 2147483614</span><br><span class="line">Partitions will be aligned on 2048-sector boundaries</span><br><span class="line">Total free space is 260050877 sectors (124.0 GiB)</span><br><span class="line"></span><br><span class="line">Number  Start (sector)    End (sector)  Size       Code  Name</span><br><span class="line">   1            2048      1887434751   900.0 GiB   8300  Linux filesystem</span><br><span class="line"></span><br><span class="line">Command (? for help): d</span><br><span class="line">Using 1</span><br><span class="line"></span><br><span class="line">Command (? for help): n   </span><br><span class="line">Partition number (1-128, default 1): </span><br><span class="line">First sector (34-2147483614, default = 2048) or &#123;+-&#125;size&#123;KMGTP&#125;: </span><br><span class="line">Last sector (2048-2147483614, default = 2147483614) or &#123;+-&#125;size&#123;KMGTP&#125;: -500M</span><br><span class="line">Current type is &#x27;Linux filesystem&#x27;</span><br><span class="line">Hex code or GUID (L to show codes, Enter = 8300): </span><br><span class="line">Changed type of partition to &#x27;Linux filesystem&#x27;</span><br><span class="line"></span><br><span class="line">Command (? for help): n</span><br><span class="line">Partition number (2-128, default 2): </span><br><span class="line">First sector (34-2147483614, default = 2146459648) or &#123;+-&#125;size&#123;KMGTP&#125;: 34</span><br><span class="line">Last sector (34-2047, default = 2047) or &#123;+-&#125;size&#123;KMGTP&#125;: </span><br><span class="line">Current type is &#x27;Linux filesystem&#x27;</span><br><span class="line">Hex code or GUID (L to show codes, Enter = 8300): ef02 </span><br><span class="line">Changed type of partition to &#x27;BIOS boot partition&#x27;</span><br><span class="line"></span><br><span class="line">Command (? for help): n</span><br><span class="line">Partition number (3-128, default 3): </span><br><span class="line">First sector (2146459615-2147483614, default = 2146459648) or &#123;+-&#125;size&#123;KMGTP&#125;: </span><br><span class="line">Last sector (2146459648-2147483614, default = 2147483614) or &#123;+-&#125;size&#123;KMGTP&#125;: </span><br><span class="line">Current type is &#x27;Linux filesystem&#x27;</span><br><span class="line">Hex code or GUID (L to show codes, Enter = 8300): ef00</span><br><span class="line">Changed type of partition to &#x27;EFI System&#x27;</span><br><span class="line"></span><br><span class="line">Command (? for help): w</span><br><span class="line"></span><br><span class="line">Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING</span><br><span class="line">PARTITIONS!!</span><br><span class="line"></span><br><span class="line">Do you want to proceed? (Y/N): y</span><br><span class="line">OK; writing new GUID partition table (GPT) to /dev/sda.</span><br><span class="line">Warning: The kernel is still using the old partition table.</span><br><span class="line">The new table will be used at the next reboot or after you</span><br><span class="line">run partprobe(8) or kpartx(8)</span><br><span class="line">The operation has completed successfully.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="E:\GitHub\github.io\source_posts\服务器装硬盘-exsi克隆虚拟机-Linux下BIOS与MBR转换为UEFI与GPT并扩展分区\6.jpg"></p>
-<p>以上是我从BIOS+MBR转换到UEFI+GPT执行过的</p>
-<p><a target="_blank" rel="noopener" href="https://yuweizzz.github.io/post/convert_legacy_bios_to_uefi/">https://yuweizzz.github.io/post/convert_legacy_bios_to_uefi/</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A3%85%E7%A1%AC%E7%9B%98-exsi%E5%85%8B%E9%9A%86%E8%99%9A%E6%8B%9F%E6%9C%BA-Linux%E4%B8%8BBIOS%E4%B8%8EMBR%E8%BD%AC%E6%8D%A2%E4%B8%BAUEFI%E4%B8%8EGPT%E5%B9%B6%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -434,91 +376,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/web%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/website/avatar.jpg">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="Karry的成长历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/web%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Web学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-22 13:22:05" itemprop="dateModified" datetime="2022-03-22T13:22:05+08:00">2022-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>慢慢积累传统web方向的基础知识和常用工具等。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/22/web%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/github+hexo+next%E5%BB%BA%E7%AB%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -616,6 +473,91 @@
 <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/data-files">https://hexo.io/zh-cn/docs/data-files</a></p>
 <p><a target="_blank" rel="noopener" href="https://charlie_lee.gitee.io/blog/posts/680198be.html">https://charlie_lee.gitee.io/blog/posts/680198be.html</a></p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/web%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/website/avatar.jpg">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/web%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Web学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:22:05" itemprop="dateModified" datetime="2022-03-22T13:22:05+08:00">2022-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>慢慢积累传统web方向的基础知识和常用工具等。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/web%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -803,87 +745,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/website/avatar.jpg">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="Karry的成长历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">鸟哥的Linux私房菜学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-22 13:18:44" itemprop="dateModified" datetime="2022-03-22T13:18:44+08:00">2022-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>鸟哥的linux私房菜读书笔记，从基础到底层理解linux。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/%E8%B5%84%E6%BA%90%E5%88%97%E8%A1%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1027,6 +888,87 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/22/%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/website/avatar.jpg">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">鸟哥的Linux私房菜学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:18:44" itemprop="dateModified" datetime="2022-03-22T13:18:44+08:00">2022-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>鸟哥的linux私房菜读书笔记，从基础到底层理解linux。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
