@@ -407,7 +407,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 00:54:07" itemprop="dateModified" datetime="2022-04-22T00:54:07+08:00">2022-04-22</time>
+                <time title="修改时间：2022-04-25 14:52:30" itemprop="dateModified" datetime="2022-04-25T14:52:30+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -443,17 +443,28 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line"><span class="built_in">date</span>: 2018-01-23 17:14:51</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;categories&quot;</span>   <span class="comment">#新添加的</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>详见：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f138032e7539">https://www.jianshu.com/p/f138032e7539</a></p>
-<p>改了<code>站点配置文件</code>中language，显示的是德语而不是中文</p>
-<p>错误改法：zh-cn</p>
+<h2 id="改了站点配置文件中language，显示的是德语而不是中文"><a href="#改了站点配置文件中language，显示的是德语而不是中文" class="headerlink" title="改了站点配置文件中language，显示的是德语而不是中文"></a>改了<code>站点配置文件</code>中language，显示的是德语而不是中文</h2><p>错误改法：zh-cn</p>
 <p>正确改法：zh-CN</p>
 <p>原因是next&#x2F;language文件夹下有着语言包，包名就是zh-CN.yml，如果小写的话，找不到对应的文件，默认第一个语言包，就是德语</p>
-<p>头像椭圆：</p>
-<p>因为头像的原图片不是正方形的，找一个正方形额图片就行了。</p>
-<p>背景：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> 	background:url(/website/background.jpg);</span><br><span class="line"> 	background-repeat: no-repeat;</span><br><span class="line">    background-attachment:fixed;</span><br><span class="line">    background-size:100% 100%;</span><br><span class="line">    background-position:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="头像椭圆："><a href="#头像椭圆：" class="headerlink" title="头像椭圆："></a>头像椭圆：</h2><p>因为头像的原图片不是正方形的，找一个正方形额图片就行了。</p>
+<h2 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> 	background:url(/website/background.jpg);</span><br><span class="line"> 	background-repeat: no-repeat;</span><br><span class="line">    background-attachment:fixed;</span><br><span class="line">    background-size:100% 100%;</span><br><span class="line">    background-position:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
+<h2 id="hexo-本地显示图片，网站上不显示，且使用md原生语法"><a href="#hexo-本地显示图片，网站上不显示，且使用md原生语法" class="headerlink" title="hexo 本地显示图片，网站上不显示，且使用md原生语法"></a>hexo 本地显示图片，网站上不显示，且使用md原生语法</h2><p>本地使用的typora，图片没使用图床，就是在本地文件夹里。</p>
+<p>综合了很多博客的办法，以下内容为亲身实践所得。</p>
+<ol>
+<li><p>在根目录下配置文件<code>_config.yml</code> 中有 <code>post_asset_folder:false改为true</code>。这样在建立文件时，<code>Hexo</code>会自动建立一个与文章同名的文件夹，这样就可以把与该文章相关的所有资源（图片）都放到那个文件夹里方便后面引用。</p>
+</li>
+<li><p>在Hexo目录下打开Git Brsh，执行一个下载上传图片插件的命令npm install hexo-asset-image –save。（也有<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30734435/article/details/98497054">这个博客</a>说:npm install <a target="_blank" rel="noopener" href="https://github.com/7ym0n/hexo-asset-image">https://github.com/7ym0n/hexo-asset-image</a> –save，说原版的插件有错，这个下载地址的没错）（<a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586/article/details/84101345?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.pc_relevant_default&utm_relevant_index=2">这个博客</a>也说了插件有错，并附了改错方法）</p>
+<p>总之就是自己去找一下正确的<code>hexo-asset-image</code>插件下下来</p>
+</li>
+<li><p>插入图片时使用<code>&lt;img src=&quot;文件夹/图片名称&quot;&gt;</code>的语法。</p>
+<p>注意：必须得是相对路径并且不要使用<code>![](文件夹/图片名称)</code>的语法，否则图片仍然显示不出来。</p>
+</li>
+</ol>
+<p>参考网站：<a target="_blank" rel="noopener" href="https://www.suyuanblog.xyz/2021/10/14/%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA/">https://www.suyuanblog.xyz/2021/10/14/%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586/article/details/84101345?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.pc_relevant_default&amp;utm_relevant_index=2">https://blog.csdn.net/xjm850552586/article/details/84101345?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.pc_relevant_default&amp;utm_relevant_index=2</a></p>
 <p>缺少内容：</p>
 <ol>
 <li>左侧头像、github链接 √</li>
@@ -465,6 +476,7 @@
 <li>阅读数量</li>
 <li>个人简介</li>
 <li>创建时间、最近更新时间</li>
+<li>让图片最后加载，文章最先加载</li>
 </ol>
 <p>建站：</p>
 <p><a target="_blank" rel="noopener" href="https://www.simon96.online/2018/10/12/hexo-tutorial/">https://www.simon96.online/2018/10/12/hexo-tutorial/</a></p>
@@ -473,6 +485,92 @@
 <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/data-files">https://hexo.io/zh-cn/docs/data-files</a></p>
 <p><a target="_blank" rel="noopener" href="https://charlie_lee.gitee.io/blog/posts/680198be.html">https://charlie_lee.gitee.io/blog/posts/680198be.html</a></p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/website/avatar.jpg">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/" class="post-title-link" itemprop="url">区块链官方CTF题 write-up</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:22:48" itemprop="dateModified" datetime="2022-03-22T13:22:48+08:00">2022-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>官方网站：<a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/">https://capturetheether.com/challenges/</a></p>
+<p>做题基本步骤：先下载好metamask插件并装载在浏览器上。登录metamask后点击题目左边的 <code>Begin Challenge</code> ，metamask会弹出是否发送消息的对话框，点击确定，之后会自动在Ropsten测试网上加载好ctf环境，之后就可以开始做题。完成题目后点击 <code>Check Solution</code> ，同样metamask会弹出是否发送消息的对话框，点击确定，完成验证。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -576,92 +674,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/website/avatar.jpg">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="Karry的成长历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/" class="post-title-link" itemprop="url">区块链官方CTF题 write-up</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-22 13:22:48" itemprop="dateModified" datetime="2022-03-22T13:22:48+08:00">2022-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>官方网站：<a target="_blank" rel="noopener" href="https://capturetheether.com/challenges/">https://capturetheether.com/challenges/</a></p>
-<p>做题基本步骤：先下载好metamask插件并装载在浏览器上。登录metamask后点击题目左边的 <code>Begin Challenge</code> ，metamask会弹出是否发送消息的对话框，点击确定，之后会自动在Ropsten测试网上加载好ctf环境，之后就可以开始做题。完成题目后点击 <code>Check Solution</code> ，同样metamask会弹出是否发送消息的对话框，点击确定，完成验证。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%98%E6%96%B9CTF%E9%A2%98%20write-up/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -722,6 +734,87 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/22/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%8E%9F%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/website/avatar.jpg">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">鸟哥的Linux私房菜学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-22 13:18:44" itemprop="dateModified" datetime="2022-03-22T13:18:44+08:00">2022-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>鸟哥的linux私房菜读书笔记，从基础到底层理解linux。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -888,87 +981,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/02/22/%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/website/avatar.jpg">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="Karry的成长历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">鸟哥的Linux私房菜学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-22 13:18:44" itemprop="dateModified" datetime="2022-03-22T13:18:44+08:00">2022-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>鸟哥的linux私房菜读书笔记，从基础到底层理解linux。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/22/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%AD%A6%E4%B9%A0/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
