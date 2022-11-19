@@ -20,18 +20,18 @@
     var CONFIG = {"hostname":"karry-almond.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="机器描述笔记本型号为惠普光影精灵3。 硬盘插口情况为：一个m.2插口，一个sata3.0插口。 原m.2插口使用的是128G的sata通道的固态硬盘  关于 m.2、sata、nvme 等的区别，可以参考以下两个网站： SSD中，SATA、m2、PCIE和NVME各有什么意义 sata3.0和m.2的区别  主板为HP Pavilion Power Laptop 15-cb0xx。  查看主板型号">
+  <meta name="description" content="机器描述笔记本型号为惠普光影精灵3。 硬盘插口情况为：一个m.2插口，一个sata3.0插口。 原m.2插口使用的是128G的sata通道的固态硬盘  关于 m.2、sata、nvme 等的区别，可以参考以下两个网站： SSD中，SATA、m2、PCIE和NVME各有什么意义 sata3.0和m.2的区别">
 <meta property="og:type" content="article">
 <meta property="og:title" content="m.2硬盘win10不重装迁移到新m.2（nvme协议）硬盘的方法">
 <meta property="og:url" content="https://karry-almond.github.io/2022/03/24/Misc/%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Karry blog">
-<meta property="og:description" content="机器描述笔记本型号为惠普光影精灵3。 硬盘插口情况为：一个m.2插口，一个sata3.0插口。 原m.2插口使用的是128G的sata通道的固态硬盘  关于 m.2、sata、nvme 等的区别，可以参考以下两个网站： SSD中，SATA、m2、PCIE和NVME各有什么意义 sata3.0和m.2的区别  主板为HP Pavilion Power Laptop 15-cb0xx。  查看主板型号">
+<meta property="og:description" content="机器描述笔记本型号为惠普光影精灵3。 硬盘插口情况为：一个m.2插口，一个sata3.0插口。 原m.2插口使用的是128G的sata通道的固态硬盘  关于 m.2、sata、nvme 等的区别，可以参考以下两个网站： SSD中，SATA、m2、PCIE和NVME各有什么意义 sata3.0和m.2的区别">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.beihaiting.com/uploads/allimg/140730/10723-140I0213126229.jpg">
 <meta property="og:image" content="https://www.jarvisw.com/wp-content/uploads/2019/06/IMG_1917-1024x768.jpg">
 <meta property="og:image" content="https://www.jarvisw.com/wp-content/uploads/2019/06/IMG_1916-1024x768.jpg">
 <meta property="article:published_time" content="2022-03-23T16:34:23.000Z">
-<meta property="article:modified_time" content="2022-03-24T06:31:21.252Z">
+<meta property="article:modified_time" content="2022-11-19T07:48:36.564Z">
 <meta property="article:author" content="Karry-Almond">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.beihaiting.com/uploads/allimg/140730/10723-140I0213126229.jpg">
@@ -188,10 +188,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-24 00:34:23 / 修改时间：14:31:21" itemprop="dateCreated datePublished" datetime="2022-03-24T00:34:23+08:00">2022-03-24</time>
+              <time title="创建时间：2022-03-24 00:34:23" itemprop="dateCreated datePublished" datetime="2022-03-24T00:34:23+08:00">2022-03-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-19 15:48:36" itemprop="dateModified" datetime="2022-11-19T15:48:36+08:00">2022-11-19</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -219,6 +225,8 @@
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/48972075">SSD中，SATA、m2、PCIE和NVME各有什么意义</a></p>
 <p><a target="_blank" rel="noopener" href="https://m.php.cn/faq/442254.html">sata3.0和m.2的区别</a></p>
 </blockquote>
+<span id="more"></span>
+
 <p>主板为HP Pavilion Power Laptop 15-cb0xx。</p>
 <blockquote>
 <p>查看主板型号：</p>
@@ -376,13 +384,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>

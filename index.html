@@ -159,6 +159,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/11/19/c++/c++%E5%AE%B9%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/website/avatar.jpg">
+      <meta itemprop="name" content="Karry-Almond">
+      <meta itemprop="description" content="Karry的成长历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Karry blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/19/c++/c++%E5%AE%B9%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">c++容器初始化的方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-19 15:06:44 / 修改时间：16:14:18" itemprop="dateCreated datePublished" datetime="2022-11-19T15:06:44+08:00">2022-11-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index"><span itemprop="name">c++</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一维容器的初始化方法"><a href="#一维容器的初始化方法" class="headerlink" title="一维容器的初始化方法"></a>一维容器的初始化方法</h1><h2 id="具名一维容器的六种初始化方法"><a href="#具名一维容器的六种初始化方法" class="headerlink" title="具名一维容器的六种初始化方法"></a>具名一维容器的六种初始化方法</h2><ol>
+<li><p><code>vector&lt;int&gt; ilist1</code></p>
+<p>默认初始化，vector为空， size为0，表明容器中没有元素，而且 capacity 也返回 0，意味着还没有分配内存空间。这种初始化方式适用于元素个数未知，需要在程序中动态添加的情况。</p>
+</li>
+<li><p><code> vector&lt;int&gt; ilist2(ilist)</code> 或 <code>vector&lt;int&gt; ilist2  = ilist</code></p>
+<p>两种方式等价 ，ilist2 初始化为ilist 的拷贝，ilist必须与ilist2 类型相同，也就是同为int的vector类型，ilist2将具有和ilist相同的容量和元素</p>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/19/c++/c++%E5%AE%B9%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%96%B9%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/11/04/Misc/windows%E4%B8%8Bnode%E6%9B%B4%E6%8D%A2%E7%89%88%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -273,7 +355,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-19 14:38:54" itemprop="dateModified" datetime="2022-11-19T14:38:54+08:00">2022-11-19</time>
+                <time title="修改时间：2022-11-19 15:48:13" itemprop="dateModified" datetime="2022-11-19T15:48:13+08:00">2022-11-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -354,10 +436,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-24 00:34:23 / 修改时间：14:31:21" itemprop="dateCreated datePublished" datetime="2022-03-24T00:34:23+08:00">2022-03-24</time>
+              <time title="创建时间：2022-03-24 00:34:23" itemprop="dateCreated datePublished" datetime="2022-03-24T00:34:23+08:00">2022-03-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-19 15:48:36" itemprop="dateModified" datetime="2022-11-19T15:48:36+08:00">2022-11-19</time>
+              </span>
 
           
 
@@ -378,69 +466,14 @@
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/48972075">SSD中，SATA、m2、PCIE和NVME各有什么意义</a></p>
 <p><a target="_blank" rel="noopener" href="https://m.php.cn/faq/442254.html">sata3.0和m.2的区别</a></p>
 </blockquote>
-<p>主板为HP Pavilion Power Laptop 15-cb0xx。</p>
-<blockquote>
-<p>查看主板型号：</p>
-<p>以管理员身份运行cmd，输入systeminfo。其中的“系统型号”就是主板型号</p>
-</blockquote>
-<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>原本m.2插口的硬盘作为系统盘，仅有128G，已经不够用了。</p>
-<p>希望使用<code>1TB、m.2插口、NAMV协议</code>的硬盘，替换原来<code>128G、m.2插口、sata协议</code>的硬盘，并<strong>把原系统无损迁移到新硬盘中</strong>。</p>
-<p>并且新硬盘需要分区，分300G做系统盘（即原系统在这里面）、分700G做存储盘。</p>
-<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><h2 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h2><h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><ol>
-<li>傲梅分区助手（下载到原存储盘中）</li>
-<li><a target="_blank" rel="noopener" href="https://www.wepe.com.cn/download.html">微PE 安装包</a>（下载到原存储盘中）(注意我第一次下载的是v2.2，使用时有问题。使用v2.1没有问题。可以都试试，依个人情况而定。)</li>
-</ol>
-<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><ol>
-<li>U盘（大小16G即可）</li>
-<li>m.2读盘器</li>
-</ol>
-<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><ol>
-<li><p>将新硬盘插入m.2读盘器，将读盘器连接到电脑。打开傲梅分区助手，迁移系统到新硬盘。这个时候可以选择新系统盘占用的空间大小，我选择了300G</p>
-</li>
-<li><p>将微PE安装到U盘中。双击微PE安装包，选择右下角的“安装到U盘”，后面的提示直接确定即可。</p>
-</li>
-<li><p>关闭计算机。将原m.2硬盘拆下，换上新的硬盘。此时再打开电脑，发现进不去，提示</p>
-<p><code>windows failed to start. a recent hardware or software change might be the cause. to fix the problem ......</code></p>
-<p>如下：</p>
-<p><img src="https://www.beihaiting.com/uploads/allimg/140730/10723-140I0213126229.jpg"></p>
-</li>
-<li><p>插上安装好微PE的U盘。进入bios，进入<code>开机选项</code>，把<code>传统模式</code>打开，并把usb的开机优先级调到最高。（这里的bios选项和操作因不同型号的电脑而不同，总的意思就是让电脑以usb开机）</p>
-</li>
-<li><p>在完成第4步后，电脑可以进入到微PE的系统。</p>
-<p>搬运<a target="_blank" rel="noopener" href="https://www.jarvisw.com/?p=1078%E4%B8%AD%E7%9A%84**SATA">https://www.jarvisw.com/?p=1078中的**SATA</a> AHCI模式硬盘下的win10迁移到nvme ssd步骤**</p>
-<ol>
-<li><p>打开diskGenius，右键屏幕左边的的<strong>ESP</strong>分区，选择<code>指派新的驱动器号（盘符）</code>，随便指派一个盘符即可，我这里假设选择的是H盘符</p>
-</li>
-<li><p>打开BOOTICE软件，选择<code>BCD编辑</code>&#x3D;&gt;<code>其他BCD文件</code>&#x3D;&gt;”H:\EFI\Microsoft\Boot\BCD”&#x3D;&gt;确定。</p>
-<p><img src="https://www.jarvisw.com/wp-content/uploads/2019/06/IMG_1917-1024x768.jpg"></p>
-<p>再继续选择<code>智能编辑模式</code>，把启动磁盘和启动分区设置对即可</p>
-<p><img src="https://www.jarvisw.com/wp-content/uploads/2019/06/IMG_1916-1024x768.jpg"></p>
-</li>
-<li><p>修改注册表，删除stornvme键下面的 StartOverride目录。</p>
-<p>首先在PE里面打开运行，输入regedit，这一步会打开PE里系统的注册表编辑器，当然我们这里并不是要改PE里的注册表，而是我们只是使用regedit的编辑功能，我们想要编辑的是nvme硬盘上系统盘的注册表。首先，注册表的位置一般是在X:\windows\system32\config目录下(X是你nvme里刚迁移过来的系统盘在PE里挂载的盘符)，我们单击一下HKEY_LOCAL_MACHINE分支将其选中，然后点【文件】-&gt;【加载配置单元】，然后找到 windows\system32\config\SYSTEM文件，加载后会让你输入一个加载项的名称，这里随便写就行，比如TEST，然后注册表编辑器就会把SYSTEM这个分支加载到HKEY_LOCAL_MACHINE\TEST下面，这时候我们展开这个目录，能看到这个分支和PE里的 HKEY_LOCAL_MACHINE\SYSTEM的结构类似，这个就是nvme硬盘上的注册表内容了。当然，这里有一点区别，那就是由于我们并没有启动nvme硬盘上的系统，所以CurrentControlSet这个目录是没有的，其实这个目录原本只是一个链接而已，指向的是当前加载的配置ControlSetxxx目录，由于这里只有一个ControlSet001，所以我们直接展开ControlSet001\Services\stornvme即可，然后删除 StartOverride目录，最后选中TEST分支，再使用【文件】-&gt;【卸载配置单元】，卸载分支即可。</p>
-</li>
-</ol>
-</li>
-<li><p>重启。进入bios，将第4步中更改的bios选项还原。即可发现系统成功运行。</p>
-</li>
-</ol>
-<h1 id="后续善后"><a href="#后续善后" class="headerlink" title="后续善后"></a>后续善后</h1><h2 id="U盘还原"><a href="#U盘还原" class="headerlink" title="U盘还原"></a>U盘还原</h2><p>在完成上述操作后，系统已经装好。不需要U盘继续装微PE系统了。如何还原U盘呢。</p>
-<p>系统搜索<code>计算机管理</code>，在左列选择<code>磁盘管理</code>，找到U盘和它的分区，删除分区后，将U盘格式化，即可恢复正常使用</p>
-<h2 id="剩下空间的分区"><a href="#剩下空间的分区" class="headerlink" title="剩下空间的分区"></a>剩下空间的分区</h2><p>打开傲梅分区助手，分区剩下的空间即可。</p>
-<h1 id="原始资料："><a href="#原始资料：" class="headerlink" title="原始资料："></a>原始资料：</h1><ol>
-<li><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dT4y1S7aY?spm_id_from=333.1007.top_right_bar_window_history.content.click%E3%80%82">https://www.bilibili.com/video/BV1dT4y1S7aY?spm_id_from=333.1007.top_right_bar_window_history.content.click。</a></p>
-<p>及其置顶评论</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、视频里漏了一点，硬盘第一次接入电脑最好初始化一下，具体操作是右键“此电脑”—管理—磁盘管理，进入之后就能看到新的硬盘，会提示你进行初始化，不用改任何设置直接初始化就可以了。另外，如果是新盘，显示有通电次数属于正常现象，这是由于硬盘盒导致的，通电时间为0就没问题。</span><br><span class="line"></span><br><span class="line">2、进入WinPE后，在修改BCD引导前，首先要用WinPE自带的DiskGenius软件挂载新装硬盘的ESP分区盘符：打开软件找到新盘的ESP分区，如果默认没有分配盘符号，可右键-指派新的驱动器号(盘符)，即可为新硬盘的ESP分区挂载一个盘符，具体操作可以参考这个视频里03:40到04:20的这段：教你升级系统盘不重装系统，看似简单其实很多坑</span><br><span class="line">之后，参考这篇文章的后半部分操作修改BCD引导：https://www.jarvisw.com/?p=1078</span><br><span class="line">【注意】：选择BCD文件时，一定是从你刚刚挂载的新硬盘ESP分区里EFI文件夹下的盘符里选择，不要选择你制作WinPE用的U盘里的ESP分区盘符，选错的话操作界面也会不一样。</span><br><span class="line"></span><br><span class="line">另外，要注意你的电脑是支持什么协议的SSD固态硬盘、以及你的硬盘盒是否也支持这种协议的硬盘；此外，硬盘选购时要注意功耗，因为这是给笔记本用，没有散热片的建议选择SN550这种低功耗盘。</span><br><span class="line"></span><br><span class="line">【其他问题及解答】：</span><br><span class="line">对于m.2物理接口，NGFF盘的金手指一般有2个缺口，NVME盘只有1个缺口；主板上的m.2插槽一般是1个缺口，但基本都向下兼容2个缺口的NGFF盘，所以如果你是NGFF换NVME盘，那一般无需担心缺口数的问题，两者都能插上，你只需要查询你的主板和cpu是否支持NVME协议即可</span><br><span class="line"></span><br><span class="line">关于4K对齐问题，经过测试，这样操作换上的新系统盘是已经4K对齐了的。</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J34y1D7wf">https://www.bilibili.com/video/BV1J34y1D7wf</a></p>
-</li>
-<li><p>网站资源：<a target="_blank" rel="noopener" href="https://www.jarvisw.com/?p=1078">https://www.jarvisw.com/?p=1078</a></p>
-</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/24/Misc/%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -910,7 +943,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-25 14:52:30" itemprop="dateModified" datetime="2022-04-25T14:52:30+08:00">2022-04-25</time>
+                <time title="修改时间：2022-11-19 15:55:31" itemprop="dateModified" datetime="2022-11-19T15:55:31+08:00">2022-11-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -933,28 +966,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="卸载nodejs"><a href="#卸载nodejs" class="headerlink" title="卸载nodejs"></a>卸载nodejs</h1><p>因为本机的nodejs太老了，使用之后发现老是报一些包的错误，故卸载nodejs并重装。没有这个情况的同学可以不管。</p>
-<p>具体查看网址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/strawberry_x/article/details/113648770">https://blog.csdn.net/strawberry_x/article/details/113648770</a></p>
-<blockquote>
-<p>err: YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key</p>
-</blockquote>
-<p>因为type后面要有一个空格，正确的写法是：</p>
+          <h1 id="报错-err-YAMLException-can-not-read-a-block-mapping-entry-a-multiline-key-may-not-be-an-implicit-key"><a href="#报错-err-YAMLException-can-not-read-a-block-mapping-entry-a-multiline-key-may-not-be-an-implicit-key" class="headerlink" title="报错 err: YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key"></a>报错 err: YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key</h1><p>因为type后面要有一个空格，正确的写法是：</p>
 <blockquote>
 <p>type: “categories”</p>
 </blockquote>
-<h3 id="Hexo-next-主题配置右侧栏的分类和标签打开的是空白"><a href="#Hexo-next-主题配置右侧栏的分类和标签打开的是空白" class="headerlink" title="Hexo next 主题配置右侧栏的分类和标签打开的是空白"></a>Hexo next 主题配置右侧栏的分类和标签打开的是空白</h3><p>先前 categorier 文件夹（myblog\source\categories），里面的 index.md 文件打开（没有文件夹就新建文件夹，再新建文件、没有文件就新建文件），修改为：</p>
+<h1 id="Hexo-next-主题配置右侧栏的分类和标签打开的是空白"><a href="#Hexo-next-主题配置右侧栏的分类和标签打开的是空白" class="headerlink" title="Hexo next 主题配置右侧栏的分类和标签打开的是空白"></a>Hexo next 主题配置右侧栏的分类和标签打开的是空白</h1><p>先前 categorier 文件夹（myblog\source\categories），里面的 index.md 文件打开（没有文件夹就新建文件夹，再新建文件、没有文件就新建文件），修改为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line"><span class="built_in">date</span>: 2018-01-23 17:14:51</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;categories&quot;</span>   <span class="comment">#新添加的</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>详见：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f138032e7539">https://www.jianshu.com/p/f138032e7539</a></p>
-<h2 id="改了站点配置文件中language，显示的是德语而不是中文"><a href="#改了站点配置文件中language，显示的是德语而不是中文" class="headerlink" title="改了站点配置文件中language，显示的是德语而不是中文"></a>改了<code>站点配置文件</code>中language，显示的是德语而不是中文</h2><p>错误改法：zh-cn</p>
+<h1 id="改了站点配置文件中language，显示的是德语而不是中文"><a href="#改了站点配置文件中language，显示的是德语而不是中文" class="headerlink" title="改了站点配置文件中language，显示的是德语而不是中文"></a>改了<code>站点配置文件</code>中language，显示的是德语而不是中文</h1><p>错误改法：zh-cn</p>
 <p>正确改法：zh-CN</p>
 <p>原因是next&#x2F;language文件夹下有着语言包，包名就是zh-CN.yml，如果小写的话，找不到对应的文件，默认第一个语言包，就是德语</p>
-<h2 id="头像椭圆："><a href="#头像椭圆：" class="headerlink" title="头像椭圆："></a>头像椭圆：</h2><p>因为头像的原图片不是正方形的，找一个正方形额图片就行了。</p>
-<h2 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> 	background:url(/website/background.jpg);</span><br><span class="line"> 	background-repeat: no-repeat;</span><br><span class="line">    background-attachment:fixed;</span><br><span class="line">    background-size:100% 100%;</span><br><span class="line">    background-position:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="头像椭圆："><a href="#头像椭圆：" class="headerlink" title="头像椭圆："></a>头像椭圆：</h1><p>因为头像的原图片不是正方形的，找一个正方形额图片就行了。</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> 	background:url(/website/background.jpg);</span><br><span class="line"> 	background-repeat: no-repeat;</span><br><span class="line">    background-attachment:fixed;</span><br><span class="line">    background-size:100% 100%;</span><br><span class="line">    background-position:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="hexo-本地显示图片，网站上不显示，且使用md原生语法"><a href="#hexo-本地显示图片，网站上不显示，且使用md原生语法" class="headerlink" title="hexo 本地显示图片，网站上不显示，且使用md原生语法"></a>hexo 本地显示图片，网站上不显示，且使用md原生语法</h2><p>本地使用的typora，图片没使用图床，就是在本地文件夹里。</p>
+<h1 id="hexo-本地显示图片，网站上不显示，且使用md原生语法"><a href="#hexo-本地显示图片，网站上不显示，且使用md原生语法" class="headerlink" title="hexo 本地显示图片，网站上不显示，且使用md原生语法"></a>hexo 本地显示图片，网站上不显示，且使用md原生语法</h1><p>本地使用的typora，图片没使用图床，就是在本地文件夹里。</p>
 <p>综合了很多博客的办法，以下内容为亲身实践所得。</p>
 <ol>
 <li><p>在根目录下配置文件<code>_config.yml</code> 中有 <code>post_asset_folder:false改为true</code>。这样在建立文件时，<code>Hexo</code>会自动建立一个与文章同名的文件夹，这样就可以把与该文章相关的所有资源（图片）都放到那个文件夹里方便后面引用。</p>
@@ -1002,89 +1030,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://karry-almond.github.io/2022/02/22/%E8%B5%84%E6%BA%90/%E8%B5%84%E6%BA%90%E5%88%97%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/website/avatar.jpg">
-      <meta itemprop="name" content="Karry-Almond">
-      <meta itemprop="description" content="Karry的成长历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Karry blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/%E8%B5%84%E6%BA%90/%E8%B5%84%E6%BA%90%E5%88%97%E8%A1%A8/" class="post-title-link" itemprop="url">资源列表</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-22 22:22:22" itemprop="dateCreated datePublished" datetime="2022-02-22T22:22:22+08:00">2022-02-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-22 13:22:24" itemprop="dateModified" datetime="2022-03-22T13:22:24+08:00">2022-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">资源</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>记录一些资源网站，包括但不限于学习网站、CTF网站、面经网站、工具网站、搞笑有趣网站等等。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/22/%E8%B5%84%E6%BA%90/%E8%B5%84%E6%BA%90%E5%88%97%E8%A1%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1150,13 +1100,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
